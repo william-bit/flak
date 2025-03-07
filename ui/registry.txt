@@ -1,0 +1,48 @@
+╭─────────────────────────────────────────────────────────[Flak]────────────────────────────────────────────────────────────────╮
+│               (1)List Applications[.] (2)Applications Settings[.] (3)Preferences[.] (4)Registry[*] (5)HTTP TUI[.]             │
+├(0)[Registry]──────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│Runtime Environment (7)                                                                                                        │
+│ * PHP                                                                                                                         │
+│ - Python                                                                                                                      │
+│ * NodeJS                                                                                                                      │
+│ - Java                                                                                                                        │
+│ - Golang                                                                                                                      │
+│ - Rust                                                                                                                        │
+│ - Ruby                                                                                                                        │
+│Server (3)                                                                                                                     │
+│ - Nginx                                                                                                                       │
+│ * Apache                                                                                                                      │
+│ - Tomcat                                                                                                                      │
+│Message Broker (1)                                                                                                             │
+│ - RabbitMQ                                                                                                                    │
+│Database (6)                                                                                                                   │
+│ * MySQL                                                                                                                       │
+│ - PostgreSQL                                                                                                                  │
+│ - mariadb                                                                                                                     │
+│ - MonggoDB                                                                                                                    │
+│ - Redis                                                                                                                       │
+│ - Valkey                                                                                                                      │
+│ - PocketBase                                                                                                                  │
+│ - Memcache                                                                                                                    │
+│Devtool (17)                                                                                                                   │
+│ - Git                                                                                                                         │
+│ - Telnet                                                                                                                      │
+│ - Sendmail                                                                                                                    │
+│ - PNPM                                                                                                                        │
+│ - Yarn                                                                                                                        │
+│ - Composer                                                                                                                    │
+│ - Adminer                                                                                                                     │
+│ - PHPMyAdmin                                                                                                                  │
+│ - Neovim                                                                                                                      │
+│ - TortoiseGit                                                                                                                 │
+│ - DBeaver                                                                                                                     │
+│ - LazyGit                                                                                                                     │
+│ - FileZilla                                                                                                                   │
+│ - FZF                                                                                                                         │
+│ - Zoxide                                                                                                                      │
+│ - Starship                                                                                                                    │
+│ - Delta                                                                                                                       │
+├[Option]──────────┰────────────────────┰────────────────┰───────────────────────────────┰──────────────────────────────────────┤
+│(i)Install Package┃(X)Uninstall Package┃u)Update Package┃(U)Update All Outdated Packages┃(/)Install spesific Version           │
+╰──────────────────┸────────────────────┸────────────────┸───────────────────────────────┸──────────────────────────────────────╯
+
