@@ -1,14 +1,15 @@
 ╭─────────────────────────────────────────────────────────[Flak]────────────────────────────────────────────────────────────────╮
-│               (1)List Applications[.] (2)Applications Settings[.] (3)Preferences[.] (4)Registry[*] (5)HTTP TUI[.]             │
-├(0)[Registry]──────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
-│Runtime Environment (7)                                                                                                        │
+│       [1]Applications(*) [2]Settings(.) [3]Preferences(.) [4]Registry(.) [5]ApiClient [6]CronGuru [7]Database [8]Games        │
+├[0]─Registry───────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│Runtime Environment (8)                                                                                                        │
 │ * PHP                                                                                                                         │
 │ - Python                                                                                                                      │
 │ * NodeJS                                                                                                                      │
-│ - Java                                                                                                                        │
+│ * Java 1.8 => Java 17 !                                                                                                        │
 │ - Golang                                                                                                                      │
 │ - Rust                                                                                                                        │
 │ - Ruby                                                                                                                        │
+│ - Scala                                                                                                                       │
 │Server (3)                                                                                                                     │
 │ - Nginx                                                                                                                       │
 │ * Apache                                                                                                                      │
@@ -27,6 +28,7 @@
 │Devtool (17)                                                                                                                   │
 │ - Git                                                                                                                         │
 │ - Telnet                                                                                                                      │
+│ - OpenSSL                                                                                                                     │
 │ - Sendmail                                                                                                                    │
 │ - PNPM                                                                                                                        │
 │ - Yarn                                                                                                                        │
@@ -35,14 +37,13 @@
 │ - PHPMyAdmin                                                                                                                  │
 │ - Neovim                                                                                                                      │
 │ - TortoiseGit                                                                                                                 │
-│ - DBeaver                                                                                                                     │
+│ - HeidiSQL                                                                                                                    │
 │ - LazyGit                                                                                                                     │
 │ - FileZilla                                                                                                                   │
 │ - FZF                                                                                                                         │
 │ - Zoxide                                                                                                                      │
 │ - Starship                                                                                                                    │
 │ - Delta                                                                                                                       │
-├[Option]──────────┰────────────────────┰────────────────┰───────────────────────────────┰──────────────────────────────────────┤
-│(i)Install Package┃(X)Uninstall Package┃u)Update Package┃(U)Update All Outdated Packages┃(/)Install spesific Version           │
-╰──────────────────┸────────────────────┸────────────────┸───────────────────────────────┸──────────────────────────────────────╯
+╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+[i]Install Package [X]Uninstall Package [u]Update Package [U]Update All Outdated Packages [/]Install spesific Version
 

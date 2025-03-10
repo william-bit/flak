@@ -39,6 +39,7 @@ Enjoy!
 ### Devtool
 
 - Git
+- OpenSSL
 - Telnet
 - Sendmail
 - PNPM
