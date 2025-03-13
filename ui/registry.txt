@@ -1,15 +1,17 @@
 ╭─────────────────────────────────────────────────────────[Flak]────────────────────────────────────────────────────────────────╮
 │       [1]Applications(*) [2]Settings(.) [3]Preferences(.) [4]Registry(.) [5]ApiClient [6]CronGuru [7]Database [8]Games        │
 ├[0]─Registry───────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
-│Runtime Environment (8)                                                                                                        │
+│Runtime Environment (10)                                                                                                       │
 │ * PHP                                                                                                                         │
 │ - Python                                                                                                                      │
 │ * NodeJS                                                                                                                      │
-│ * Java 1.8 => Java 17 !                                                                                                        │
+│ * Java 1.8 => Java 17 !                                                                                                       │
 │ - Golang                                                                                                                      │
 │ - Rust                                                                                                                        │
 │ - Ruby                                                                                                                        │
 │ - Scala                                                                                                                       │
+│ - Erlang                                                                                                                      │
+│ - Elixir                                                                                                                      │
 │Server (3)                                                                                                                     │
 │ - Nginx                                                                                                                       │
 │ * Apache                                                                                                                      │
@@ -25,13 +27,11 @@
 │ - Valkey                                                                                                                      │
 │ - PocketBase                                                                                                                  │
 │ - Memcache                                                                                                                    │
-│Devtool (17)                                                                                                                   │
+│Devtool (16)                                                                                                                   │
 │ - Git                                                                                                                         │
 │ - Telnet                                                                                                                      │
 │ - OpenSSL                                                                                                                     │
-│ - Sendmail                                                                                                                    │
 │ - PNPM                                                                                                                        │
-│ - Yarn                                                                                                                        │
 │ - Composer                                                                                                                    │
 │ - Adminer                                                                                                                     │
 │ - PHPMyAdmin                                                                                                                  │

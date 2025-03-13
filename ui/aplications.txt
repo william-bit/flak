@@ -15,13 +15,13 @@
 │ Tomcat 11.0                       │ 8080                               │ -                                                    │
 │ PocketBase 0.25.9                 │ 8090                               │ -                                                    │
 │ RabbitMQ 4.0.2                    │ 5672                               │ -                                                    │
+│ Meilisearch 1.13.3                │ 7700                               │ -                                                    │
+│ MinIO 2025-02-28                  │ 9000                               │ -                                                    │
 ├[-]─Runtime────────────────────────┴────────────────────────────────────┴──────────────────────────────────────────────────────┤
 │ PHP 8.1.10,NodeJS 20.10.0,Python 3.13.2,Java 21.0.6,Scala 3.6.3,Go 1.22.4,Ruby 3.4.2,Rust 1.82.0,Erlang 27.3,Elixir 1.18.2    │
 ├[\]─Applications───────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
-│ Telnet,Sendmail,PNPM,Yarn,Composer,Adminer,PHPMyAdmin,TortoiseGit,HeidiSQL,LazyGit,OpenSSL,FileZilla,FZF,Git,Zoxide,Starship  │
+│ Telnet,PNPM,Composer,Adminer,PHPMyAdmin,TortoiseGit,HeidiSQL,LazyGit,OpenSSL,FileZilla,FZF,Git,Zoxide,Starship,NeoVim,Delta   │
 ├[0]─Logs - .\tmp\error.log─────────────────────────────────────────────────────────────────────────────────────────────────────┤
-│                                                                                                                               ▐
-│                                                                                                                               ▐
 │                                                                                                                               ▐
 │                                                                                                                               ▐
 │                                                                                                                               ▐
@@ -34,4 +34,4 @@
 │                                                                                                                               │
 │                                                                                                                               │
 ╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────[<]─[>]╯
-[.]Stop/Start All [BackSpace]Stop Selected [Space]Start Selected [`]Web [,]Setting [o]Opt Folder [i]Web Folder [?]Help
+[.]Stop/Start All [Space]Start/Stop Selected [,]Setting [`]Switch Version [/]Root Folder [\]Change Port [;]Open Web [?]Help
