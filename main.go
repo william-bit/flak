@@ -62,6 +62,26 @@ func startService(name, path string, args ...string) (*exec.Cmd, error) {
 	return cmd, nil
 }
 
+// initMySQLDataFolder initializes the MySQL data dir if needed
+func initMySQLDataFolder(dataDir string) error {
+	_, err := os.Stat(dataDir)
+	if err != nil {
+		cmd := exec.Command(
+			`C:\flak\bin\mysql\mysql-9.2.0-winx64\bin\mysqld.exe`,
+			"--initialize",
+			"--user=mysql",
+			"--datadir="+dataDir,
+		)
+
+		cmd.Stdout = os.Stdout
+		cmd.Stderr = os.Stderr
+
+		log.Println("Initializing MySQL data directory...")
+		return cmd.Run() // This waits until the process finishes
+	}
+	return nil
+}
+
 // Reconnect to existing services
 func reconnectToExistingServices() {
 	names := []string{"mysql", "php", "nginx"}
@@ -83,29 +103,35 @@ func main() {
 	reconnectToExistingServices()
 
 	var mysqlCmd, phpCmd, nginxCmd *exec.Cmd
-	var err error
 
 	// Start MySQL (Update path accordingly)
 	if _, err := loadPID("mysql"); err != nil || !isProcessRunning(1234) {
-		mysqlCmd, err = startService("mysql", `C:\mysql\bin\mysqld.exe`, "--console")
+		initMySQLDataFolder(`C:\flak\data\mysql-9`)
+		mysqlCmd, err = startService("mysql", `C:\flak\bin\mysql\mysql-9.2.0-winx64\bin\mysqld.exe`, `--console`, `--datadir=C:\flak\data\mysql-9`)
 		if err != nil {
 			log.Fatalf("Failed to start MySQL: %v", err)
+		} else {
+			log.Printf("mysqlCmd.Process.Pid: %d", mysqlCmd.Process.Pid)
 		}
 	}
 
 	// Start PHP-CGI
 	if _, err := loadPID("php"); err != nil || !isProcessRunning(1234) {
-		phpCmd, err = startService("php", `C:\php\php-cgi.exe`, "-b", "127.0.0.1:9000")
+		phpCmd, err = startService("php", `C:\flak\bin\php\php-8.4.6-nts-Win32-vs17-x64\php-cgi.exe`, "-b", "127.0.0.1:9000")
 		if err != nil {
 			log.Fatalf("Failed to start PHP: %v", err)
+		} else {
+			log.Printf("phpCmd.Process.Pid: %d", phpCmd.Process.Pid)
 		}
 	}
 
 	// Start Nginx
 	if _, err := loadPID("nginx"); err != nil || !isProcessRunning(1234) {
-		nginxCmd, err = startService("nginx", `C:\nginx\nginx.exe`)
+		nginxCmd, err = startService("nginx", `C:\flak\bin\nginx\nginx-1.22.0\nginx.exe`, `-c`, `C:\flak\etc\nginx\nginx.conf`)
 		if err != nil {
 			log.Fatalf("Failed to start Nginx: %v", err)
+		} else {
+			log.Printf("nginxCmd.Process.Pid: %d", nginxCmd.Process.Pid)
 		}
 	}
 
@@ -115,6 +141,32 @@ func main() {
 	<-sigChan
 
 	log.Println("Shutting down services...")
+
+	shutdownService := func(name string, cmd *exec.Cmd) error {
+		if cmd != nil && cmd.Process != nil {
+			pid := cmd.Process.Pid
+
+			cmd := exec.Command("taskkill", "/F", "/T", "/PID", strconv.Itoa(pid))
+			out, err := cmd.CombinedOutput()
+			if err != nil {
+				log.Printf("Error killing process: %s", out)
+				return err
+			}
+
+			fmt.Printf("Successfully killed process with PID %d\n", pid)
+			return nil
+		} else {
+			return fmt.Errorf("no process found for %s", name)
+		}
+	}
+
+	// Perform shutdown
+	shutdownService("MySQL", mysqlCmd)
+	shutdownService("PHP", phpCmd)
+	shutdownService("Nginx", nginxCmd)
+
+	// Remove PID files
+	os.RemoveAll(pidDir)
 
 	// Optional: Add graceful shutdown logic if supported by services
 	time.Sleep(3 * time.Second)
