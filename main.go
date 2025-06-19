@@ -68,6 +68,7 @@ func initMySQLDataFolder(dataDir string) error {
 	if err != nil {
 		cmd := exec.Command(
 			`C:\flak\bin\mysql\mysql-9.2.0-winx64\bin\mysqld.exe`,
+			`--console`,
 			"--initialize",
 			"--user=mysql",
 			"--datadir="+dataDir,
