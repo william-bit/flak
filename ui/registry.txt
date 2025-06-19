@@ -5,17 +5,17 @@
 │ * PHP                                                                                                                         │
 │ - Python                                                                                                                      │
 │ * NodeJS                                                                                                                      │
-│ * Java 1.8 => Java 17 !                                                                                                       │
+│ * Java 1.8 => Java 21 !                                                                                                       │
 │ - Golang                                                                                                                      │
 │ - Rust                                                                                                                        │
 │ - Ruby                                                                                                                        │
 │ - Scala                                                                                                                       │
 │ - Erlang                                                                                                                      │
+│ - Haskell                                                                                                                      │
 │ - Elixir                                                                                                                      │
 │Server (3)                                                                                                                     │
 │ - Nginx                                                                                                                       │
 │ * Apache                                                                                                                      │
-│ - Tomcat                                                                                                                      │
 │Message Broker (1)                                                                                                             │
 │ - RabbitMQ                                                                                                                    │
 │Database (6)                                                                                                                   │
@@ -27,23 +27,25 @@
 │ - Valkey                                                                                                                      │
 │ - PocketBase                                                                                                                  │
 │ - Memcache                                                                                                                    │
-│Devtool (16)                                                                                                                   │
+│Devtool (19)                                                                                                                   │
+│ - FZF                                                                                                                         │
+│ - Git                                                                                                                         │
+│ - Delta                                                                                                                       │
+│ - Neovim                                                                                                                      │
+│ - File Find(fd)                                                                                                               │
+│ - RipGrep(rg)                                                                                                                 │
+│ - Bat                                                                                                                         │
 │ - Git                                                                                                                         │
 │ - Telnet                                                                                                                      │
 │ - OpenSSL                                                                                                                     │
 │ - PNPM                                                                                                                        │
 │ - Composer                                                                                                                    │
-│ - Adminer                                                                                                                     │
-│ - PHPMyAdmin                                                                                                                  │
-│ - Neovim                                                                                                                      │
-│ - TortoiseGit                                                                                                                 │
-│ - HeidiSQL                                                                                                                    │
 │ - LazyGit                                                                                                                     │
-│ - FileZilla                                                                                                                   │
-│ - FZF                                                                                                                         │
+│ - LazyDocker                                                                                                                  │
 │ - Zoxide                                                                                                                      │
 │ - Starship                                                                                                                    │
-│ - Delta                                                                                                                       │
+│ - FileZilla                                                                                                                   │
+│ - Adminer                                                                                                                     │
+│ - PHPMyAdmin                                                                                                                  │
 ╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
-[i]Install Package [X]Uninstall Package [u]Update Package [U]Update All Outdated Packages [/]Install spesific Version
-
+[i]Install Package [X]Uninstall Package [u]Update [U]Update All Packages [/]Install spesific Version [`]Switch Version

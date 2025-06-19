@@ -59,11 +59,12 @@ Enjoy!
 
 ## Goal
 
-1. Support Version switching
+1. Support Version switching for supported tools.
 2. Interactive configuration to each tool.
-3. Easy download package each tool.
+3. Easy download package each tool.(If tools not in zip archive it will download .msi/.exe file and initiate installation)
 4. Easily add tool to env
 
 ## Not Goal
 
 1. Provide native GUI at the moment.
+

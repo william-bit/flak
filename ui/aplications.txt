@@ -1,5 +1,5 @@
 ╭─────────────────────────────────────────────────────────[Flak]────────────────────────────────────────────────────────────────╮
-│   [1]Applications(*) [2]Settings(.) [3]Preferences(.) [4]Registry(.) [5]ApiClient [6]CronGuru [7]Database [8]Regex [8]Atlas   │
+│     [1]Applications(*) [2]Settings [3]Preferences [4]Registry [5]ApiClient [6]Database [7]Regex [8]Generator & En/Decoder     │
 ├[=]─Server and Database ───────────┬────────────────────────────────────┬──────────────────────────────────────────────────────┤
 │ Name                              │ Port                               │ Status                                               │
 ├┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┼┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┼┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┤
@@ -17,10 +17,11 @@
 │ RabbitMQ 4.0.2                    │ 5672                               │ -                                                    │
 │ Meilisearch 1.13.3                │ 7700                               │ -                                                    │
 │ MinIO 2025-02-28                  │ 9000                               │ -                                                    │
-├[-]─Runtime────────────────────────┴────────────────────────────────────┴──────────────────────────────────────────────────────┤
-│ PHP 8.1.10,NodeJS 20.10.0,Python 3.13.2,Java 21.0.6,Scala 3.6.3,Go 1.22.4,Ruby 3.4.2,Rust 1.82.0,Erlang 27.3,Elixir 1.18.2    │
+├[-]─Runtime Installed──────────────┴────────────────────────────────────┴──────────────────────────────────────────────────────┤
+│ Java 21.0.6,PHP 8.1.10,NodeJS 20.10.0,Python 3.13.2,Go 1.22.4,Ruby 3.4.2,Rust 1.82.0,                                         │
+│ Scala 3.6.3,Erlang 27.3,Elixir 1.18.2,Haskell 9.12.1,Dart 3.4.5,Flutter 3.32                                                  │
 ├[\]─Applications───────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
-│ Telnet,PNPM,Composer,Adminer,PHPMyAdmin,TortoiseGit,HeidiSQL,LazyGit,OpenSSL,FileZilla,FZF,Git,Zoxide,Starship,NeoVim,Delta   │
+│ Telnet,PNPM,Composer,Adminer,PHPMyAdmin,rg,fd,bat,LazyGit,OpenSSL,FileZilla,FZF,Git,Zoxide,Starship,NeoVim,Delta              │
 ├[0]─Logs - .\tmp\error.log─────────────────────────────────────────────────────────────────────────────────────────────────────┤
 │                                                                                                                               ▐
 │                                                                                                                               ▐
@@ -34,4 +35,4 @@
 │                                                                                                                               │
 │                                                                                                                               │
 ╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────[<]─[>]╯
-[.]Stop/Start All [Space]Start/Stop Selected [,]Setting [`]Switch Version [/]Root Folder [\]Change Port [;]Open Web [?]Help
+[.]Stop/Start All [Space]Start/Stop [,]Reload  [/]Root Folder [']Change Port [;]Open Web [?]Setting
