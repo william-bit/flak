@@ -1,0 +1,80 @@
+  Proto  Local Address          Foreign Address        State           PID     Path
+  TCP    0.0.0.0:80             0.0.0.0:0              LISTENING       27796   C:\flak\bin\nginx\nginx-1.22.0\nginx.exe
+  TCP    0.0.0.0:135            0.0.0.0:0              LISTENING       992
+  TCP    0.0.0.0:445            0.0.0.0:0              LISTENING       4
+  TCP    0.0.0.0:1024           0.0.0.0:0              LISTENING       1644
+  TCP    0.0.0.0:3306           0.0.0.0:0              LISTENING       26868   C:\flak\bin\mysql\mysql-5.7.43-winx64\bin\mysqld.exe
+  TCP    0.0.0.0:5040           0.0.0.0:0              LISTENING       6224
+  TCP    0.0.0.0:7070           0.0.0.0:0              LISTENING       7412
+  TCP    0.0.0.0:49664          0.0.0.0:0              LISTENING       1688
+  TCP    0.0.0.0:49665          0.0.0.0:0              LISTENING       1564
+  TCP    0.0.0.0:49666          0.0.0.0:0              LISTENING       3204
+  TCP    0.0.0.0:49667          0.0.0.0:0              LISTENING       3608
+  TCP    0.0.0.0:49668          0.0.0.0:0              LISTENING       7116
+  TCP    0.0.0.0:50131          0.0.0.0:0              LISTENING       4
+  TCP    10.0.0.24:139          0.0.0.0:0              LISTENING       4
+  TCP    10.0.0.24:1025         4.213.25.240:443       ESTABLISHED     8020
+  TCP    10.0.0.24:12326        15.235.229.233:443     ESTABLISHED     7412
+  TCP    10.0.0.24:12434        57.144.193.33:80       ESTABLISHED     13692   C:\Program Files\WindowsApps\5319275A.WhatsAppDesktop_2.2523.1.0_x64__cv1g1gvanyjgm\WhatsApp.exe
+  TCP    10.0.0.24:12477        18.233.41.13:8885      ESTABLISHED     26588   C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe
+  TCP    10.0.0.24:12503        185.213.83.110:89      ESTABLISHED     26588   C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe
+  TCP    10.0.0.24:12946        43.218.133.155:22      ESTABLISHED     7568    C:\WINDOWS\System32\OpenSSH\ssh.exe
+  TCP    10.0.0.24:13352        52.71.220.158:443      ESTABLISHED     17088   c:\Users\dartmedia\AppData\Roaming\Code\User\globalStorage\supermaven.supermaven\binary\v2009\win32-x64\sm-agent.exe
+  TCP    10.0.0.24:13527        185.213.83.110:89      ESTABLISHED     26588   C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe
+  TCP    10.0.0.24:13530        185.213.83.110:89      ESTABLISHED     26588   C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe
+  TCP    10.0.0.24:14198        185.213.83.110:89      ESTABLISHED     26588   C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe
+  TCP    10.0.0.24:14221        185.213.83.110:89      ESTABLISHED     26588   C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe
+  TCP    10.0.0.24:14222        185.213.83.110:89      ESTABLISHED     26588   C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe
+  TCP    10.0.0.24:14224        108.136.211.202:22     ESTABLISHED     17136   C:\WINDOWS\System32\OpenSSH\ssh.exe
+  TCP    10.0.0.24:14290        185.213.83.110:89      TIME_WAIT       0
+  TCP    10.0.0.24:14292        20.42.65.89:443        ESTABLISHED     5128    C:\Users\dartmedia\AppData\Local\Programs\Microsoft VS Code\Code.exe
+  TCP    10.0.0.24:14300        185.213.83.110:89      ESTABLISHED     26588   C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe
+  TCP    10.0.0.24:14301        185.213.83.110:89      ESTABLISHED     26588   C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe
+  TCP    10.0.0.24:14302        185.213.83.110:89      ESTABLISHED     26588   C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe
+  TCP    10.0.0.24:14303        185.213.83.110:89      ESTABLISHED     26588   C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe
+  TCP    10.0.0.24:14304        20.44.10.123:443       ESTABLISHED     26588   C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe
+  TCP    10.0.0.24:14306        23.215.35.25:443       ESTABLISHED     11728   C:\WINDOWS\SystemApps\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\SearchHost.exe
+  TCP    10.0.0.24:14307        23.215.35.11:443       CLOSE_WAIT      11728   C:\WINDOWS\SystemApps\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\SearchHost.exe
+  TCP    10.0.0.24:14308        13.107.253.59:443      CLOSE_WAIT      11728   C:\WINDOWS\SystemApps\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\SearchHost.exe
+  TCP    10.0.0.24:14309        40.99.10.18:443        ESTABLISHED     11728   C:\WINDOWS\SystemApps\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\SearchHost.exe
+  TCP    10.0.0.24:14310        40.99.10.18:443        ESTABLISHED     11728   C:\WINDOWS\SystemApps\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\SearchHost.exe
+  TCP    10.0.0.24:14311        185.213.83.110:89      ESTABLISHED     26588   C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe
+  TCP    10.0.0.24:14312        185.213.83.110:89      ESTABLISHED     26588   C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe
+  TCP    10.0.0.24:14313        13.107.253.59:443      ESTABLISHED     5128    C:\Users\dartmedia\AppData\Local\Programs\Microsoft VS Code\Code.exe
+  TCP    127.0.0.1:9003         0.0.0.0:0              LISTENING       18424   C:\flak\bin\php\php-8.3.21-Win32-vs16-x64\php-cgi.exe
+  TCP    127.0.0.1:9004         0.0.0.0:0              LISTENING       3736    C:\flak\bin\php\php-8.3.21-Win32-vs16-x64\php-cgi.exe
+  TCP    [::]:135               [::]:0                 LISTENING       992
+  TCP    [::]:445               [::]:0                 LISTENING       4
+  TCP    [::]:1024              [::]:0                 LISTENING       1644
+  TCP    [::]:3306              [::]:0                 LISTENING       26868   C:\flak\bin\mysql\mysql-5.7.43-winx64\bin\mysqld.exe
+  TCP    [::]:7070              [::]:0                 LISTENING       7412
+  TCP    [::]:49664             [::]:0                 LISTENING       1688
+  TCP    [::]:49665             [::]:0                 LISTENING       1564
+  TCP    [::]:49666             [::]:0                 LISTENING       3204
+  TCP    [::]:49667             [::]:0                 LISTENING       3608
+  TCP    [::]:49668             [::]:0                 LISTENING       7116
+  TCP    [::]:50131             [::]:0                 LISTENING       4
+  UDP    0.0.0.0:500            *:*                                    7560
+  UDP    0.0.0.0:4500           *:*                                    7560
+  UDP    0.0.0.0:5050           *:*                                    6224
+  UDP    0.0.0.0:5353           *:*                                    3444
+  UDP    0.0.0.0:5353           *:*                                    1312    C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe
+  UDP    0.0.0.0:5353           *:*                                    1312    C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe
+  UDP    0.0.0.0:21119          *:*                                    11524
+  UDP    0.0.0.0:50001          *:*                                    7412
+  UDP    0.0.0.0:62285          *:*                                    11524
+  UDP    10.0.0.24:137          *:*                                    4
+  UDP    10.0.0.24:138          *:*                                    4
+  UDP    10.0.0.24:1900         *:*                                    4388
+  UDP    10.0.0.24:54623        *:*                                    4388
+  UDP    127.0.0.1:1900         *:*                                    4388
+  UDP    127.0.0.1:49666        127.0.0.1:49666                        7608
+  UDP    127.0.0.1:54624        *:*                                    4388
+  UDP    [::]:500               *:*                                    7560
+  UDP    [::]:4500              *:*                                    7560
+  UDP    [::]:5353              *:*                                    1312    C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe
+  UDP    [::]:5353              *:*                                    3444
+  UDP    [::1]:1900             *:*                                    4388
+  UDP    [::1]:54622            *:*                                    4388
+  UDP    [fe80::bad3:ad0:534f:ff48%15]:1900  *:*                                    4388
+  UDP    [fe80::bad3:ad0:534f:ff48%15]:54621  *:*                                    4388

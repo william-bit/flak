@@ -1,5 +1,5 @@
 ╭─────────────────────────────────────────────────────────[Flak]────────────────────────────────────────────────────────────────╮
-│       [1]Applications(*) [2]Settings(.) [3]Preferences(.) [4]Registry(.) [5]ApiClient [6]CronGuru [7]Database [8]Games        │
+│     [1]Applications [2]Setting & Preferences [3]Registry(*) [4]Database [5]Cron [6]Mail [7]Netstat [8]ApiClient [9]Regex      │
 ├[0]─Registry───────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
 │Runtime Environment (10)                                                                                                       │
 │ * PHP                                                                                                                         │
@@ -11,11 +11,12 @@
 │ - Ruby                                                                                                                        │
 │ - Scala                                                                                                                       │
 │ - Erlang                                                                                                                      │
-│ - Haskell                                                                                                                      │
+│ - Haskell                                                                                                                     │
 │ - Elixir                                                                                                                      │
 │Server (3)                                                                                                                     │
 │ - Nginx                                                                                                                       │
 │ * Apache                                                                                                                      │
+│ - Tomcat                                                                                                                      │
 │Message Broker (1)                                                                                                             │
 │ - RabbitMQ                                                                                                                    │
 │Database (6)                                                                                                                   │

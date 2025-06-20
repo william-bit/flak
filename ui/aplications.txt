@@ -1,10 +1,10 @@
 ╭─────────────────────────────────────────────────────────[Flak]────────────────────────────────────────────────────────────────╮
-│     [1]Applications(*) [2]Settings [3]Preferences [4]Registry [5]ApiClient [6]Database [7]Regex [8]Generator & En/Decoder     │
+│     [1]Applications(*) [2]Setting & Preferences [3]Registry [4]Database [5]Cron [6]Mail [7]Netstat [8]ApiClient [9]Regex      │
 ├[=]─Server and Database ───────────┬────────────────────────────────────┬──────────────────────────────────────────────────────┤
 │ Name                              │ Port                               │ Status                                               │
 ├┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┼┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┼┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┤
 │ MySQL 8.0.32                      │ 3306                               │ UP                                                   ▐
-│ MariaDB 10.11.2                   │ 3306                               │ Error                                                │
+│ MariaDB 10.11.2                   │ 3306                               │ Failed with Error                                    │
 │ PostgreSQL 14.9                   │ 5432                               │ -                                                    │
 │ MongoDB 6.0.12                    │ 27017                              │ -                                                    │
 │ Redis 7.4.1                       │ 6379                               │ -                                                    │
@@ -35,4 +35,4 @@
 │                                                                                                                               │
 │                                                                                                                               │
 ╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────[<]─[>]╯
-[.]Stop/Start All [Space]Start/Stop [,]Reload  [/]Root Folder [']Change Port [;]Open Web [?]Setting
+[.]Stop/Start All [Space]Start/Stop [,]Reload  [/]Root Folder [']Change Port [;]Open in Web [?]Setting

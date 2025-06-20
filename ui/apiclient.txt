@@ -1,0 +1,32 @@
+╭─────────────────────────────────────────────────────────[Flak]────────────────────────────────────────────────────────────────╮
+│     [1]Applications(*) [2]Setting & Preferences [3]Registry [4]Database [5]Cron [6]Mail [7]Netstat [8]ApiClient [9]Regex      │
+├[=]─POST───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ {URL}                                                                                                             [==========]│
+├[-]┈Collection┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┬[;]┈ Body(*) ┈ Header ┈ Query ┈ Auth ┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┤
+│ GET  GetRandomUser                ▐ UserId: 1                                                                                 ▐
+│ POST CreateNewUser                │ UserName: Wanda                                                                           │
+│ POST PostOrder                    │ UserPhoto: {File}/userGan.jpg                                                             │
+│ » AlternateFolder/                │                                                                                           │
+│   » Invoice/                      │                                                                                           │
+│     GET Invoice                   │                                                                                           │
+│                                   │                                                                                           │
+│                                   │                                                                                           │
+│                                   │                                                                                           │
+│                                   │                                                                                           │
+│                                   │                                                                                           │
+│                                   ├[?]─ Preview(*) ─ Header ─ Cookies ─ Timeline ─────────────────────────────────────────────┤
+│                                   │                                                                                           ▐
+│                                   │                                                                                           │
+│                                   │                                                                                           │
+│                                   │                                                                                           │
+│                                   │                                                                                           │
+│                                   │                                                                                           │
+│                                   │                                                                                           │
+│                                   │                                                                                           │
+│                                   │                                                                                           │
+│                                   │                                                                                           │
+│                                   │                                                                                           │
+│                                   │                                                                                           │
+│                                   │                                                                                           │
+╰───────────────────────────────────┴────────────────────────────────────────────────────────────────────────────────────[<]─[>]╯
+[Space]Send [.]Change Method [,]Git [/]Jump [']Change Env [\]Change result view
