@@ -118,7 +118,7 @@ func main() {
 
 	// Start PHP-CGI
 	if _, err := loadPID("php"); err != nil || !isProcessRunning(1234) {
-		phpCmd, err = startService("php", `C:\flak\bin\php\php-8.4.6-nts-Win32-vs17-x64\php-cgi.exe`, "-b", "127.0.0.1:9000")
+		phpCmd, err = startService("php", `C:\flak\bin\php\php-8.4.6-nts-Win32-vs17-x64\php-cgi.exe`, "-b", "127.0.0.1:9003")
 		if err != nil {
 			log.Fatalf("Failed to start PHP: %v", err)
 		} else {
