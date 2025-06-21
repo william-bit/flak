@@ -20,7 +20,7 @@
                 "homepage": "https://downloads.mysql.com/archives/community/",
                 "url": "https://dev.mysql.com/get/Downloads/MySQL-9.2/mysql-9.2.0-winx64.zip",
                 "executable": "${DIR}/bin/mysql/mysql-9.2.0-winx64/bin/mysqld.exe",
-                "dataDir" : "${DIR}/data/mysql-9",
+                "dataDir": "${DIR}/data/mysql-9",
                 "initialize": {
                     "initDataFolder": [
                         "--console",
@@ -31,6 +31,7 @@
                 },
                 "args": [
                     "--console",
+                    "--log_syslog=0",
                     "--datadir=${dataDir}"
                 ]
             }

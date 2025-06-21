@@ -67,7 +67,7 @@ func initMySQLDataFolder(dataDir string) error {
 	_, err := os.Stat(dataDir)
 	if err != nil {
 		cmd := exec.Command(
-			`C:\flak\bin\mysql\mysql-9.2.0-winx64\bin\mysqld.exe`,
+			`C:\flak\bin\mysql\mysql-5.7.43-winx64\bin\mysqld.exe`,
 			`--console`,
 			"--initialize",
 			"--user=mysql",
@@ -107,8 +107,8 @@ func main() {
 
 	// Start MySQL (Update path accordingly)
 	if _, err := loadPID("mysql"); err != nil || !isProcessRunning(1234) {
-		initMySQLDataFolder(`C:\flak\data\mysql-9`)
-		mysqlCmd, err = startService("mysql", `C:\flak\bin\mysql\mysql-9.2.0-winx64\bin\mysqld.exe`, `--console`, `--datadir=C:\flak\data\mysql-9`)
+		initMySQLDataFolder(`C:\flak\data\mysql`)
+		mysqlCmd, err = startService("mysql", `C:\flak\bin\mysql\mysql-5.7.43-winx64\bin\mysqld.exe`, `--console`, `--log_syslog=0`, `--datadir=C:\flak\data\mysql`)
 		if err != nil {
 			log.Fatalf("Failed to start MySQL: %v", err)
 		} else {
