@@ -25,5 +25,5 @@
 │ 2025-10-11 12:10:13.123 │ no-reply postfix/smtp[2112701]: 49C577E1E4: to=<ricohphutabarat@gmail.com>, relay=gmail-smtp-in.....│
 │ 2025-10-11 12:10:13.123 │ no-reply postfix/smtp[2112701]: 49C577E1E4: to=<ricohphutabarat@gmail.com>, relay=gmail-smtp-in.....│
 │ 2025-10-11 12:10:13.123 │ no-reply postfix/smtp[2112701]: 49C577E1E4: to=<ricohphutabarat@gmail.com>, relay=gmail-smtp-in.....│
-╰─────────────────────────┴──────────────────────────────────────────────────────────────────────────────────────────────[<]─[>]╯
+╰─────────────────────────┴─────────────────────────────────────────────────────────────────────────────────────────────────────╯
 [.] Start local mail server

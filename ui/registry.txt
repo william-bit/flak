@@ -13,9 +13,10 @@
 │ - Erlang                                                                                                                      │
 │ - Haskell                                                                                                                     │
 │ - Elixir                                                                                                                      │
-│Server (3)                                                                                                                     │
+│Server (2)                                                                                                                     │
 │ - Nginx                                                                                                                       │
 │ * Apache                                                                                                                      │
+│Java Server (1)                                                                                                                │
 │ - Tomcat                                                                                                                      │
 │Message Broker (1)                                                                                                             │
 │ - RabbitMQ                                                                                                                    │
