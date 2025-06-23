@@ -44,7 +44,7 @@ Enjoy!
 
 ### DBMS
 
-- DBeaver
+- heidisql
 - PHPMyAdmin
 - PHPRedisAdmin
 - Adminer
@@ -76,8 +76,8 @@ Enjoy!
 - FZF
 - Zoxide
 - Starship
-- File Find(fd)                                                                                                               │
-- RipGrep(rg)                                                                                                                 │
+- FileFind(fd)
+- RipGrep(rg)
 
 ## Goal
 
