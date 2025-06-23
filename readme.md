@@ -26,7 +26,8 @@ Enjoy!
 - PostgreSQL
 - MonggoDB
 - PocketBase
-- Memcache
+- Memcached
+- Redis
 
 ### Message broker
 - RabbitMQ
