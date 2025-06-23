@@ -9,14 +9,9 @@ Enjoy!
 ### Runtime and service
 
 - PHP
-- Python
 - NodeJS
 - Java
-- Golang
-- Rust
-- Ruby
-- Erlang
-- Elixir
+- Python
 
 ### Server
 
@@ -30,8 +25,6 @@ Enjoy!
 - MariaDB
 - PostgreSQL
 - MonggoDB
-- Redis
-- ValKey
 - PocketBase
 - Memcache
 
@@ -40,6 +33,7 @@ Enjoy!
 
 ### Devtool
 
+- FileZilla
 - Git
 - OpenSSL
 - Telnet

@@ -1,11 +1,11 @@
 ╭─────────────────────────────────────────────────────────[Flak]────────────────────────────────────────────────────────────────╮
 │            [1]Applications(*) [2]Settings [3]Registry [4]Database [5]Cron [6]Mail [7]Netstat [8]ApiClient [9]Regex            │
-├[0]─ Data Catalog ──┬─[=]─ Query ─ New ─ Structure ──────────────────────────────── MySQL » Localhost » DBtest1 » TestingTbl3 ─┤
+├[0]─ Data Catalog ──┬─[=]─╴Query╶╴New╶╴Structure╶────────────────────────────────────────────────╴MySQL » Localhost » DBtest1╶─┤
 │TestingTbl0         │SELECT *                                                                                                  ▐
 │TestingTbl1         │FROM DBNAME.TABLENAME                                                                                     │
 │TestingTbl2         │WHERE COLUMN = VALUE                                                                                      │
 │TestingTbl3(*)      │ORDER BY COLUMN LIMIT 25;                                                                                 │
-│                    ├─[-]─┬ Result ─ Export ───────────────────────────────────────────────────────────────────────────────────┤
+│                    ├╴[-]╶┬╴Result╶──┬─────────┬───────────────────────────────────────────────────────────────────────────────┤
 │                    « Act │ Month    │ Savings │                                                                               »
 │                    ├┈┈┈┈┈┼┈┈┈┈┈┈┈┈┈┈┼┈┈┈┈┈┈┈┈┈┼┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┤
 │                    │ (·) │ January  │ $250    │                                                                               │
@@ -26,5 +26,5 @@
 │                    │     │          │         │                                                                               │
 │                    │     │          │         │                                                                               │
 │                    │     │          │         │                                                                               │
-╰────────────────────┴─────┴──────────┴─────────┴────────────────────────────────────── 3 rows (0.147 s) ── [<] Page 1 of 1 [>]─╯
-[.]Execute [/]Search [Enter]Modify [Space]Select [`]DataBase [?]Server [BackSpace]Delete [']Import/Export [;]Clone [,]Sort
+╰───────────────────╴Selected (1)╶────┴─────────┴───────────────────────────────────────╴3 rows (0.147 s)╶─╴[<] Page 1 of 1 [>]╶╯
+[.]Execute [/]Search [Enter]Modify [Space]Select [`]DataBase [BackSpace]Delete [']Import/Export [;]Clone [,]Sort
