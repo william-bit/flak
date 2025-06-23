@@ -6,13 +6,6 @@
 │ - Python                                                                                                                      │
 │ * NodeJS                                                                                                                      │
 │ * Java 1.8 => Java 21 !                                                                                                       │
-│ - Golang                                                                                                                      │
-│ - Rust                                                                                                                        │
-│ - Ruby                                                                                                                        │
-│ - Scala                                                                                                                       │
-│ - Erlang                                                                                                                      │
-│ - Haskell                                                                                                                     │
-│ - Elixir                                                                                                                      │
 │Server (2)                                                                                                                     │
 │ - Nginx                                                                                                                       │
 │ * Apache                                                                                                                      │
@@ -26,9 +19,8 @@
 │ - mariadb                                                                                                                     │
 │ - MonggoDB                                                                                                                    │
 │ - Redis                                                                                                                       │
-│ - Valkey                                                                                                                      │
 │ - PocketBase                                                                                                                  │
-│ - Memcache                                                                                                                    │
+│ - Memcached                                                                                                                   │
 │Devtool (19)                                                                                                                   │
 │ - FZF                                                                                                                         │
 │ - Git                                                                                                                         │

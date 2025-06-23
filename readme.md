@@ -30,29 +30,54 @@ Enjoy!
 - Redis
 
 ### Message broker
+
 - RabbitMQ
 
 ### Devtool
 
-- FileZilla
 - Git
 - OpenSSL
 - Telnet
 - Sendmail
-- PNPM
-- Yarn
-- Composer
-- Adminer
+- TortoiseGit
+- FileZilla
+
+### DBMS
+
+- DBeaver
 - PHPMyAdmin
 - PHPRedisAdmin
-- TortoiseGit
-- DBeaver
-- LazyGit
+- Adminer
+
+### Editor
+
+- VsCode
 - NotePad++
+- Neovim
+
+### Dependency managers
+
+- Composer
+- PNPM
+- Yarn
+- Gradle
+- Maven
+
+### FTP client
+
 - FileZilla
+
+### Terminal enhancements
+
+- Bat
+- LazyDocker
+- Delta
+- LazyGit
 - FZF
 - Zoxide
 - Starship
+- File Find(fd)                                                                                                               │
+- RipGrep(rg)                                                                                                                 │
 
 ## Goal
 
@@ -64,4 +89,3 @@ Enjoy!
 ## Not Goal
 
 1. Provide native GUI at the moment.
-

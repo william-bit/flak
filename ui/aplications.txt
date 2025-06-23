@@ -7,19 +7,15 @@
 │ MariaDB 10.11.2                   │ 3306                               │ Failed with Error                                    │
 │ PostgreSQL 14.9                   │ 5432                               │ -                                                    │
 │ MongoDB 6.0.12                    │ 27017                              │ -                                                    │
-│ Redis 7.4.1                       │ 6379                               │ -                                                    │
-│ Valkey 2.0.0                      │ 6379                               │ -                                                    │
-│ Memcache 1.6.37                   │ 11211                              │ -                                                    │
+│ Redis 5.0.14.1                    │ 6379                               │ -                                                    │
+│ Memcached 1.6.37                  │ 11211                              │ -                                                    │
 │ Apache 2.4.54                     │ 8050                               │ -                                                    │
 │ NGINX 1.26.3                      │ 80                                 │ UP                                                   │
 │ Tomcat 11.0                       │ 8080                               │ -                                                    │
 │ PocketBase 0.25.9                 │ 8090                               │ -                                                    │
 │ RabbitMQ 4.0.2                    │ 5672                               │ -                                                    │
-│ Meilisearch 1.13.3                │ 7700                               │ -                                                    │
-│ MinIO 2025-02-28                  │ 9000                               │ -                                                    │
 ├[-]─Runtime Installed──────────────┴────────────────────────────────────┴──────────────────────────────────────────────────────┤
-│ Java 21.0.6,PHP 8.1.10,NodeJS 20.10.0,Python 3.13.2,Go 1.22.4,Ruby 3.4.2,Rust 1.82.0,                                         │
-│ Scala 3.6.3,Erlang 27.3,Elixir 1.18.2,Haskell 9.12.1,Dart 3.4.5,Flutter 3.32                                                  │
+│ Java 21.0.6,PHP 8.1.10,NodeJS 20.10.0,Python 3.13.2                                                                           │
 ├[\]─Applications───────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
 │ Telnet,PNPM,Composer,Adminer,PHPMyAdmin,rg,fd,bat,LazyGit,OpenSSL,FileZilla,FZF,Git,Zoxide,Starship,NeoVim,Delta              │
 ├[0]─Logs - .\tmp\error.log─────────────────────────────────────────────────────────────────────────────────────────────────────┤
