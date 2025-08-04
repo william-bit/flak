@@ -5,22 +5,31 @@
         {
             "id": "php-8.4.6-nts-Win32-vs17-x64",
             "version": "8.4.6",
+            "type": "nts",
+            "arch": "x64",
+            "vc": "vs17",
+            "sha256": null,
             "homepage": "https://windows.php.net/download/",
             "url": "https://windows.php.net/downloads/releases/php-8.4.6-nts-Win32-vs17-x64.zip",
+            "extractDir": "php-8.4.6-nts-Win32-vs17-x64",
             "executable": "${DIR}/bin/php/php-8.4.6-nts-Win32-vs17-x64/php-cgi.exe",
             "args": [
                 "-b",
                 "127.0.0.1:9003"
-            ]
+            ],
+            "license": "PHP-3.01",
+            "origin": "official"
         }
     ],
     "mysql": [
         {
             "id": "mysql-9.2.0-winx64",
             "version": "9.2.0",
+            "sha256": null,
             "homepage": "https://downloads.mysql.com/archives/community/",
             "url": "https://dev.mysql.com/get/Downloads/MySQL-9.2/mysql-9.2.0-winx64.zip",
             "executable": "${DIR}/bin/mysql/mysql-9.2.0-winx64/bin/mysqld.exe",
+            "extractDir": "mysql-9.2.0-winx64",
             "dataDir": "${DIR}/data/mysql-9",
             "initialize": {
                 "initDataFolder": [
@@ -34,20 +43,26 @@
                 "--console",
                 "--log_syslog=0",
                 "--datadir=${dataDir}"
-            ]
+            ],
+            "license": "GPL-2.0",
+            "origin": "official"
         }
     ],
     "nginx": [
         {
             "id": "nginx-1.22.0",
             "version": "1.22.0",
+            "sha256": null,
             "homepage": "https://nginx.org/en/download.html",
             "url": "https://nginx.org/download/nginx-1.22.0.zip",
             "executable": "${DIR}/bin/nginx/nginx-1.22.0/nginx.exe",
+            "extractDir": "nginx-1.22.0",
             "args": [
                 "-c",
                 "${DIR}/etc/nginx/nginx.conf"
-            ]
+            ],
+            "license": "BSD-2-Clause",
+            "origin": "official"
         }
     ]
 }

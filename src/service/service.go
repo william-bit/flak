@@ -5,24 +5,9 @@ import (
 	"log"
 	"os"
 	"os/exec"
-	"path/filepath"
 	"strconv"
 	"syscall"
 )
-
-const (
-	PidDir = "./tmp/pid"
-	wwwDir = "./www"
-)
-
-func init() {
-	_ = os.Mkdir(PidDir, 0755)
-}
-
-// Save PID to file
-func SavePID(name string, pid int) error {
-	return os.WriteFile(filepath.Join(PidDir, name+".pid"), []byte(strconv.Itoa(pid)), 0644)
-}
 
 // Start service in detached mode
 func StartService(name, path string, args ...string) (*exec.Cmd, error) {
@@ -43,32 +28,15 @@ func StartService(name, path string, args ...string) (*exec.Cmd, error) {
 	return cmd, nil
 }
 
-// Load PID from file
-func LoadPID(name string) (int, error) {
-	data, err := os.ReadFile(filepath.Join(PidDir, name+".pid"))
-	if err != nil {
-		return 0, err
-	}
-	pid, err := strconv.Atoi(string(data))
-	return pid, err
-}
-
-// Check if process is still running
-func IsProcessRunning(pid int) bool {
-	cmd := exec.Command("tasklist", "/FI", fmt.Sprintf("PID eq %d", pid))
-	out, err := cmd.CombinedOutput()
-	return err == nil && len(out) > 0
-}
-
 // Reconnect to existing services
-func ReconnectToExistingServices() {
+func ResumeServices() {
 	names := []string{"mysql", "php", "nginx"}
 	for _, name := range names {
 		pid, err := LoadPID(name)
 		if err != nil {
 			continue
 		}
-		if IsProcessRunning(pid) {
+		if RunningProcess(pid) {
 			log.Printf("%s is already running with PID %d", name, pid)
 		} else {
 			log.Printf("%s had PID %d but is no longer running.", name, pid)
@@ -92,4 +60,11 @@ func ShutdownService(name string, cmd *exec.Cmd) error {
 	} else {
 		return fmt.Errorf("no process found for %s", name)
 	}
+}
+
+// Check if process is still running
+func RunningProcess(pid int) bool {
+	cmd := exec.Command("tasklist", "/FI", fmt.Sprintf("PID eq %d", pid))
+	out, err := cmd.CombinedOutput()
+	return err == nil && len(out) > 0
 }

@@ -58,7 +58,9 @@
         "version",
         "homepage",
         "url",
-        "executable"
+        "sha256",
+        "executable",
+        "extractDir"
       ],
       "properties": {
         "id": {
@@ -80,9 +82,12 @@
           "description": "Download URL for the ZIP archive."
         },
         "sha256": {
-          "type": "string",
-          "description": "SHA-256 checksum for verifying download integrity.",
-          "pattern": "^[a-fA-F0-9]{64}$"
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[a-fA-F0-9]{64}$",
+          "description": "SHA-256 checksum. Use null if not yet known."
         },
         "extractDir": {
           "type": "string",
@@ -116,6 +121,96 @@
             }
           },
           "additionalProperties": false
+        },
+        "license": {
+          "type": "string",
+          "description": "Software license (e.g., PHP-3.01, GPL-2.0, BSD-2-Clause).",
+          "enum": [
+            "MIT",
+            "BSD-2-Clause",
+            "BSD-3-Clause",
+            "ISC",
+            "Apache-2.0",
+            "Python-2.0",
+            "PHP-3.01",
+            "Zlib",
+            "X11",
+            "CC0-1.0",
+            "Unlicense",
+            "GPL-2.0",
+            "GPL-3.0",
+            "LGPL-2.1",
+            "LGPL-3.0",
+            "AGPL-3.0",
+            "MPL-2.0",
+            "public-domain",
+            "unknown",
+            "none",
+            "proprietary",
+            "commercial",
+            "closed-source",
+            "EPL-1.0",
+            "EPL-2.0",
+            "Artistic-2.0",
+            "Ruby",
+            "OpenSSL",
+            "GPL-2.0-or-later",
+            "GPL-3.0-or-later",
+            "MIT OR Apache-2.0",
+            "BSD-3-Clause OR GPL-2.0",
+            "0BSD",
+            "BSL-1.0",
+            "CDDL-1.0",
+            "CATALYST",
+            "EUPL-1.2",
+            "Freetype",
+            "SSPL-1.0",
+            "RSAL-2.0",
+            "JSON",
+            "LGPL-2.0",
+            "MS-PL",
+            "NCSA",
+            "OFL-1.1",
+            "Parity-7.0.0",
+            "WTFPL"
+          ]
+        },
+        "type": {
+          "type": "string",
+          "description": "Build type: thread safety model.",
+          "enum": [
+            "nts",
+            "ts"
+          ]
+        },
+        "arch": {
+          "type": "string",
+          "description": "CPU architecture.",
+          "enum": [
+            "x64",
+            "x86",
+            "arm64"
+          ]
+        },
+        "vc": {
+          "type": "string",
+          "description": "Visual C++ compiler version used to build.",
+          "enum": [
+            "vs16",
+            "vs17",
+            "vs18",
+            "vs19",
+            "vs20"
+          ]
+        },
+        "origin": {
+          "type": "string",
+          "description": "Source of the build: official, community, or custom.",
+          "enum": [
+            "official",
+            "community",
+            "custom"
+          ]
         }
       },
       "additionalProperties": false

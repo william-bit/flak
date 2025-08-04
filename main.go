@@ -2,9 +2,9 @@ package main
 
 import (
 	"flak/src/service"
-	"flak/src/service/database"
-	"flak/src/service/runtime"
-	"flak/src/service/webserver"
+	"flak/src/service/database/mysql"
+	"flak/src/service/runtime/php"
+	"flak/src/service/webserver/nginx"
 	"log"
 	"os"
 	"os/signal"
@@ -14,11 +14,11 @@ import (
 
 func main() {
 	// Try to reconnect to existing services
-	service.ReconnectToExistingServices()
+	service.ResumeServices()
 
-	webserver.StartNginx()
-	runtime.StartPHP()
-	database.StartMySql()
+	nginx.Start()
+	php.Start()
+	mysql.Start()
 
 	// Wait for interrupt signal
 	sigChan := make(chan os.Signal, 1)
@@ -27,9 +27,9 @@ func main() {
 
 	log.Println("Shutting down services...")
 
-	webserver.StopNginx()
-	runtime.StopPHP()
-	database.StopMySql()
+	nginx.Stop()
+	php.Stop()
+	mysql.Stop()
 
 	// Remove PID files
 	os.RemoveAll(service.PidDir)

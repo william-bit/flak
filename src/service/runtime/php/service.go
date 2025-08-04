@@ -1,4 +1,4 @@
-package runtime
+package php
 
 import (
 	"flak/src/service"
@@ -8,9 +8,9 @@ import (
 
 var phpCmd *exec.Cmd
 
-func StartPHP() {
+func Start() {
 	// Start PHP-CGI
-	if _, err := service.LoadPID("php"); err != nil || !service.IsProcessRunning(1234) {
+	if _, err := service.LoadPID("php"); err != nil || !service.RunningProcess(1234) {
 		phpCmd, err = service.StartService("php", `C:\flak\bin\php\php-8.4.6-nts-Win32-vs17-x64\php-cgi.exe`, "-b", "127.0.0.1:9003")
 		if err != nil {
 			log.Fatalf("Failed to start PHP: %v", err)
@@ -20,6 +20,6 @@ func StartPHP() {
 	}
 }
 
-func StopPHP() {
+func Stop() {
 	service.ShutdownService("PHP", phpCmd)
 }
