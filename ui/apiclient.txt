@@ -3,8 +3,8 @@
 ├─[=]─POST──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
 │ {URL}                                                                                                             [==========]│
 ├─[-]┈Collection┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┬┈[;]┈ Body(*) ┈ Header ┈ Query ┈ Auth ┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┤
-│ GET  GetRandomUser                ▐ UserId: 1                                                                                 ▐
-│ POST CreateNewUser                │ UserName: Wanda                                                                           │
+│ GET  GetRandomUser                ▐ UserId   : 1                                                                              ▐
+│ POST CreateNewUser                │ UserName : Wanda                                                                          │
 │ POST PostOrder                    │ UserPhoto: {File}/userGan.jpg                                                             │
 │ - WorkCompany/                    │                                                                                           │
 │ * AlternateFolder/                │                                                                                           │

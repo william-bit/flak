@@ -12,6 +12,9 @@ Enjoy!
 - NodeJS
 - Java
 - Python
+- Golang
+- Ruby
+- Elixir
 
 ### Server
 
@@ -38,9 +41,10 @@ Enjoy!
 - Git
 - OpenSSL
 - Telnet
-- Sendmail
+- MailPit
 - TortoiseGit
 - FileZilla
+- Pandoc
 
 ### DBMS
 

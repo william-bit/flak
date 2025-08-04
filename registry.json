@@ -1,54 +1,45 @@
 {
     "php": {
-        "category": "runtime",
-        "packages": {
-            "php-8.4.6-nts-Win32-vs17-x64": {
-                "homepage": "https://windows.php.net/download/",
-                "url": "https://windows.php.net/downloads/releases/php-8.4.6-nts-Win32-vs17-x64.zip",
-                "executable": "${DIR}/bin/php/php-8.4.6-nts-Win32-vs17-x64/php-cgi.exe",
-                "args": [
-                    "-b",
-                    "127.0.0.1:9003"
-                ]
-            }
+        "php-8.4.6-nts-Win32-vs17-x64": {
+            "homepage": "https://windows.php.net/download/",
+            "url": "https://windows.php.net/downloads/releases/php-8.4.6-nts-Win32-vs17-x64.zip",
+            "executable": "${DIR}/bin/php/php-8.4.6-nts-Win32-vs17-x64/php-cgi.exe",
+            "args": [
+                "-b",
+                "127.0.0.1:9003"
+            ]
         }
     },
     "mysql": {
-        "category": "service",
-        "packages": {
-            "mysql-9.2.0-winx64": {
-                "homepage": "https://downloads.mysql.com/archives/community/",
-                "url": "https://dev.mysql.com/get/Downloads/MySQL-9.2/mysql-9.2.0-winx64.zip",
-                "executable": "${DIR}/bin/mysql/mysql-9.2.0-winx64/bin/mysqld.exe",
-                "dataDir": "${DIR}/data/mysql-9",
-                "initialize": {
-                    "initDataFolder": [
-                        "--console",
-                        "--initialize",
-                        "--user=mysql",
-                        "--datadir=${dataDir}"
-                    ]
-                },
-                "args": [
+        "mysql-9.2.0-winx64": {
+            "homepage": "https://downloads.mysql.com/archives/community/",
+            "url": "https://dev.mysql.com/get/Downloads/MySQL-9.2/mysql-9.2.0-winx64.zip",
+            "executable": "${DIR}/bin/mysql/mysql-9.2.0-winx64/bin/mysqld.exe",
+            "dataDir": "${DIR}/data/mysql-9",
+            "initialize": {
+                "initDataFolder": [
                     "--console",
-                    "--log_syslog=0",
+                    "--initialize",
+                    "--user=mysql",
                     "--datadir=${dataDir}"
                 ]
-            }
+            },
+            "args": [
+                "--console",
+                "--log_syslog=0",
+                "--datadir=${dataDir}"
+            ]
         }
     },
     "nginx": {
-        "category": "server",
-        "packages": {
-            "nginx-1.22.0": {
-                "homepage": "https://nginx.org/en/download.html",
-                "url": "https://nginx.org/download/nginx-1.22.0.zip",
-                "executable": "${DIR}/bin/nginx/nginx-1.22.0/nginx.exe",
-                "args": [
-                    "-c",
-                    "${DIR}/etc/nginx/nginx.conf"
-                ]
-            }
+        "nginx-1.22.0": {
+            "homepage": "https://nginx.org/en/download.html",
+            "url": "https://nginx.org/download/nginx-1.22.0.zip",
+            "executable": "${DIR}/bin/nginx/nginx-1.22.0/nginx.exe",
+            "args": [
+                "-c",
+                "${DIR}/etc/nginx/nginx.conf"
+            ]
         }
     }
 }
