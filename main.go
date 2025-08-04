@@ -16,9 +16,15 @@ func main() {
 	// Try to reconnect to existing services
 	service.ResumeServices()
 
-	nginx.Start()
-	php.Start()
-	mysql.Start()
+	var services []service.Service = []service.Service{
+		nginx.New("1.22.0", `C:\flak\bin\nginx\nginx-1.22.0\nginx.exe`),
+		php.New("8.4.6", `C:\flak\bin\php\php-8.4.6-nts-Win32-vs17-x64\php-cgi.exe`),
+		mysql.New("5", `C:\flak\bin\mysql\mysql-5.7.43-winx64\bin\mysqld.exe`),
+	}
+
+	for _, service := range services {
+		service.Start() // ← This is the interface in action!
+	}
 
 	// Wait for interrupt signal
 	sigChan := make(chan os.Signal, 1)
@@ -27,9 +33,9 @@ func main() {
 
 	log.Println("Shutting down services...")
 
-	nginx.Stop()
-	php.Stop()
-	mysql.Stop()
+	for _, service := range services {
+		service.Stop() // ← This is the interface in action!
+	}
 
 	// Remove PID files
 	os.RemoveAll(service.PidDir)

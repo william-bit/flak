@@ -7,10 +7,22 @@ import (
 	"os/exec"
 )
 
-var mysqlCmd *exec.Cmd
+type MySQLService struct {
+	Version string
+	Port    int
+	Dir     string
+	Cmd     *exec.Cmd
+}
+
+func New(version, dir string) *MySQLService {
+	return &MySQLService{
+		Version: version,
+		Dir:     dir,
+	}
+}
 
 // initMySQLDataFolder initializes the MySQL data dir if needed
-func initMySQLDataFolder(dataDir string) error {
+func (mysql *MySQLService) initMySQLDataFolder(dataDir string) error {
 	_, err := os.Stat(dataDir)
 	if err != nil {
 		cmd := exec.Command(
@@ -30,20 +42,27 @@ func initMySQLDataFolder(dataDir string) error {
 	return nil
 }
 
-func Start() {
+func (mysql *MySQLService) Start() {
 	// Start MySQL (Update path accordingly)
 	if _, err := service.LoadPID("mysql"); err != nil || !service.RunningProcess(1234) {
-		initMySQLDataFolder(`C:\flak\data\mysql`)
-		mysqlCmd, err = service.StartService("mysql", `C:\flak\bin\mysql\mysql-5.7.43-winx64\bin\mysqld.exe`, `--console`, `--log_syslog=0`, `--datadir=C:\flak\data\mysql`)
+		mysql.initMySQLDataFolder(`C:\flak\data\mysql`)
+		mysql.Cmd, err = service.StartService("mysql", mysql.Dir, `--console`, `--log_syslog=0`, `--datadir=C:\flak\data\mysql`)
 		if err != nil {
 			log.Fatalf("Failed to start MySQL: %v", err)
 		} else {
-			log.Printf("mysqlCmd.Process.Pid: %d", mysqlCmd.Process.Pid)
+			log.Printf("mysqlCmd.Process.Pid: %d", mysql.Cmd.Process.Pid)
 		}
 	}
 
 }
 
-func Stop() {
-	service.ShutdownService("MySQL", mysqlCmd)
+func (mysql *MySQLService) Stop() {
+	service.ShutdownService("MySQL", mysql.Cmd)
+}
+
+func (mysql *MySQLService) Status() string {
+	if mysql.Cmd != nil && mysql.Cmd.Process != nil {
+		return "running"
+	}
+	return "stopped"
 }
