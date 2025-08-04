@@ -1,6 +1,10 @@
 {
-    "php": {
-        "php-8.4.6-nts-Win32-vs17-x64": {
+    "$schema": "./schema.json",
+    "$schemaVersion": "1.0",
+    "php": [
+        {
+            "id": "php-8.4.6-nts-Win32-vs17-x64",
+            "version": "8.4.6",
             "homepage": "https://windows.php.net/download/",
             "url": "https://windows.php.net/downloads/releases/php-8.4.6-nts-Win32-vs17-x64.zip",
             "executable": "${DIR}/bin/php/php-8.4.6-nts-Win32-vs17-x64/php-cgi.exe",
@@ -9,9 +13,11 @@
                 "127.0.0.1:9003"
             ]
         }
-    },
-    "mysql": {
-        "mysql-9.2.0-winx64": {
+    ],
+    "mysql": [
+        {
+            "id": "mysql-9.2.0-winx64",
+            "version": "9.2.0",
             "homepage": "https://downloads.mysql.com/archives/community/",
             "url": "https://dev.mysql.com/get/Downloads/MySQL-9.2/mysql-9.2.0-winx64.zip",
             "executable": "${DIR}/bin/mysql/mysql-9.2.0-winx64/bin/mysqld.exe",
@@ -30,9 +36,11 @@
                 "--datadir=${dataDir}"
             ]
         }
-    },
-    "nginx": {
-        "nginx-1.22.0": {
+    ],
+    "nginx": [
+        {
+            "id": "nginx-1.22.0",
+            "version": "1.22.0",
             "homepage": "https://nginx.org/en/download.html",
             "url": "https://nginx.org/download/nginx-1.22.0.zip",
             "executable": "${DIR}/bin/nginx/nginx-1.22.0/nginx.exe",
@@ -41,5 +49,5 @@
                 "${DIR}/etc/nginx/nginx.conf"
             ]
         }
-    }
+    ]
 }

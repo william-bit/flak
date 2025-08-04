@@ -1,0 +1,179 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "$id": "https://example.com/schemas/dev-registry-schema.json",
+  "title": "Development Tool Registry",
+  "description": "Schema for defining downloadable dev tools (PHP, MySQL, Nginx, etc.) on Windows using array-based format.",
+  "type": "object",
+  "required": [
+    "$schema"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "Path or URI to the JSON Schema used to validate this file.",
+      "default": "./schema.json"
+    },
+    "$schemaVersion": {
+      "type": "string",
+      "description": "Version of this registry format schema (e.g., '1.0')."
+    },
+    "$help": {
+      "type": "string",
+      "description": "Optional help text for users or developers."
+    },
+    "php": {
+      "type": "array",
+      "description": "List of PHP builds available for installation.",
+      "items": {
+        "$ref": "#/definitions/toolBuild"
+      }
+    },
+    "mysql": {
+      "type": "array",
+      "description": "List of MySQL builds available for installation.",
+      "items": {
+        "$ref": "#/definitions/toolBuild"
+      }
+    },
+    "nginx": {
+      "type": "array",
+      "description": "List of Nginx builds available for installation.",
+      "items": {
+        "$ref": "#/definitions/toolBuild"
+      }
+    }
+  },
+  "additionalProperties": {
+    "type": "array",
+    "description": "Allow additional tools (e.g., redis, node) using same build format.",
+    "items": {
+      "$ref": "#/definitions/toolBuild"
+    }
+  },
+  "definitions": {
+    "toolBuild": {
+      "type": "object",
+      "required": [
+        "id",
+        "version",
+        "homepage",
+        "url",
+        "executable"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique build identifier (e.g., php-8.4.6-nts-Win32-vs17-x64)."
+        },
+        "version": {
+          "type": "string",
+          "description": "Semantic version of the tool (e.g., 8.4.6, 9.2.0)."
+        },
+        "homepage": {
+          "type": "string",
+          "format": "uri",
+          "description": "Official website of the tool."
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "description": "Download URL for the ZIP archive."
+        },
+        "sha256": {
+          "type": "string",
+          "description": "SHA-256 checksum for verifying download integrity.",
+          "pattern": "^[a-fA-F0-9]{64}$"
+        },
+        "extractDir": {
+          "type": "string",
+          "description": "Expected folder name after extraction (optional)."
+        },
+        "executable": {
+          "type": "string",
+          "description": "Path to executable, supports variables like ${DIR}."
+        },
+        "args": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Command-line arguments to pass when starting."
+        },
+        "dataDir": {
+          "type": "string",
+          "description": "Data directory path (e.g., for MySQL), may use ${DIR}."
+        },
+        "initialize": {
+          "type": "object",
+          "description": "Initialization commands (e.g., for first-time setup).",
+          "properties": {
+            "initDataFolder": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "Arguments for data initialization command."
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "examples": [
+    {
+      "$schema": "./schema.json",
+      "$schemaVersion": "1.0",
+      "php": [
+        {
+          "id": "php-8.4.6-nts-Win32-vs17-x64",
+          "version": "8.4.6",
+          "homepage": "https://windows.php.net/download/",
+          "url": "https://windows.php.net/downloads/releases/php-8.4.6-nts-Win32-vs17-x64.zip",
+          "executable": "${DIR}/bin/php/php-8.4.6-nts-Win32-vs17-x64/php-cgi.exe",
+          "args": [
+            "-b",
+            "127.0.0.1:9003"
+          ]
+        }
+      ],
+      "mysql": [
+        {
+          "id": "mysql-9.2.0-winx64",
+          "version": "9.2.0",
+          "homepage": "https://downloads.mysql.com/archives/community/",
+          "url": "https://dev.mysql.com/get/Downloads/MySQL-9.2/mysql-9.2.0-winx64.zip",
+          "executable": "${DIR}/bin/mysql/mysql-9.2.0-winx64/bin/mysqld.exe",
+          "dataDir": "${DIR}/data/mysql-9",
+          "initialize": {
+            "initDataFolder": [
+              "--console",
+              "--initialize",
+              "--user=mysql",
+              "--datadir=${dataDir}"
+            ]
+          },
+          "args": [
+            "--console",
+            "--log_syslog=0",
+            "--datadir=${dataDir}"
+          ]
+        }
+      ],
+      "nginx": [
+        {
+          "id": "nginx-1.22.0",
+          "version": "1.22.0",
+          "homepage": "https://nginx.org/en/download.html",
+          "url": "https://nginx.org/download/nginx-1.22.0.zip",
+          "executable": "${DIR}/bin/nginx/nginx-1.22.0/nginx.exe",
+          "args": [
+            "-c",
+            "${DIR}/etc/nginx/nginx.conf"
+          ]
+        }
+      ]
+    }
+  ]
+}
