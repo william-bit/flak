@@ -7,7 +7,6 @@ import (
 )
 
 type screen struct {
-	squares int
 	cursorX int
 	cursorY int
 	width   int
@@ -16,7 +15,6 @@ type screen struct {
 
 func InitScreen() screen {
 	return screen{
-		squares: 10,
 		cursorX: 0,
 		cursorY: 0,
 		width:   0,
