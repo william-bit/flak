@@ -31,6 +31,8 @@ func (screen screen) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	case tea.WindowSizeMsg:
 		screen.width = msg.Width - 2
 		screen.height = msg.Height - 3
+		screen.cursorX = 0
+		screen.cursorY = 0
 	case tea.KeyMsg:
 		switch msg.String() {
 		case "ctrl+c", "q":
@@ -59,7 +61,7 @@ func (screen screen) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 func (screen screen) View() string {
 	var s string
 
-	// Top Border reapeat
+	// Top Border
 	s += "╭" + strings.Repeat("─", screen.width) + "╮\n"
 
 	for yAxis := 0; yAxis < screen.height; yAxis++ {
