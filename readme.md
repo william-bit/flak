@@ -83,6 +83,36 @@ Enjoy!
 - FileFind(fd)
 - RipGrep(rg)
 
+## Debug
+
+Run this command to debug the application:
+```bash
+dlv debug --headless --listen=:2345 --api-version=2 --log --log-output=rpc
+```
+
+Attach dap server to vscode/dap client :
+
+Example of vscode configuration:
+
+```json
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Attach to Headless Delve",
+            "type": "go",
+            "request": "attach",
+            "mode": "remote",
+            "remotePath": "${workspaceFolder}",
+            "port": 2345,
+            "host": "127.0.0.1",
+            "showLog": true,
+            "trace": "verbose"
+        }
+    ]
+}
+```
+
 ## Goal
 
 1. Support Version switching for supported tools.

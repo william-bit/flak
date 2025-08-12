@@ -44,7 +44,7 @@ func (mysql *MySQLService) initMySQLDataFolder(dataDir string) error {
 
 func (mysql *MySQLService) Start() {
 	// Start MySQL (Update path accordingly)
-	if _, err := service.LoadPID("mysql"); err != nil || !service.RunningProcess(1234) {
+	if _, err := service.LoadPID("mysql"); err != nil || !service.RunningService(1234) {
 		mysql.initMySQLDataFolder(`C:\flak\data\mysql`)
 		mysql.Cmd, err = service.StartService("mysql", mysql.Dir, `--console`, `--log_syslog=0`, `--datadir=C:\flak\data\mysql`)
 		if err != nil {

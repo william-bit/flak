@@ -22,7 +22,7 @@ func New(version, dir string) *NginxService {
 
 func (nginx *NginxService) Start() {
 	// Start Nginx
-	if _, err := service.LoadPID("nginx"); err != nil || !service.RunningProcess(1234) {
+	if _, err := service.LoadPID("nginx"); err != nil || !service.RunningService(1234) {
 		nginx.Cmd, err = service.StartService("nginx", nginx.Dir, `-c`, `C:\flak\etc\nginx\nginx.conf`)
 		if err != nil {
 			log.Fatalf("Failed to start Nginx: %v", err)

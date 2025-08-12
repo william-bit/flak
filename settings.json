@@ -1,7 +1,6 @@
 {
     "__DIR__": "c:/flak",
-    "style": "border",
     "autoStart": true,
     "autoUpdate": true,
-    "registry" : {}
+    "serverMode" : false,
 }

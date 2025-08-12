@@ -1,5 +1,5 @@
 {
-    "$schema": "./schema.json",
+    "$schema": "./usr/schema/registry.schema.json",
     "$schemaVersion": "1.0",
     "php": [
         {

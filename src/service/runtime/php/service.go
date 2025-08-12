@@ -22,7 +22,7 @@ func New(version, dir string) *PHPService {
 
 func (php *PHPService) Start() {
 	// Start PHP-CGI
-	if _, err := service.LoadPID("php"); err != nil || !service.RunningProcess(1234) {
+	if _, err := service.LoadPID("php"); err != nil || !service.RunningService(1234) {
 		php.Cmd, err = service.StartService("php", php.Dir, "-b", "127.0.0.1:9003")
 		if err != nil {
 			log.Fatalf("Failed to start PHP: %v", err)
