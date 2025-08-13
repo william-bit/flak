@@ -1,10 +1,8 @@
 package main
 
 import (
+	"flak/src/config"
 	"flak/src/service"
-	"flak/src/service/database/mysql"
-	"flak/src/service/runtime/php"
-	"flak/src/service/webserver/nginx"
 	"flak/src/tui"
 	"fmt"
 	"log"
@@ -17,20 +15,25 @@ import (
 )
 
 func main() {
-	p := tea.NewProgram(tui.InitScreen())
+	data := config.LoadConfig()
+	// initTUI(data)
+	initServices(data)
+}
+
+func initTUI(data config.Config) {
+	p := tea.NewProgram(tui.InitScreen(data))
 	if _, err := p.Run(); err != nil {
 		fmt.Printf("Alas, there's been an error: %v", err)
 		os.Exit(1)
 	}
 }
 
-func InitServices() { // Try to reconnect to existing services
+func initServices(data config.Config) { // Try to reconnect to existing services
 	service.ResumeService()
 
-	var services []service.Service = []service.Service{
-		nginx.New("1.22.0", `C:\flak\bin\nginx\nginx-1.22.0\nginx.exe`),
-		php.New("8.4.6", `C:\flak\bin\php\php-8.4.6-nts-Win32-vs17-x64\php-cgi.exe`),
-		mysql.New("5", `C:\flak\bin\mysql\mysql-5.7.43-winx64\bin\mysqld.exe`),
+	var services []service.Service = []service.Service{}
+	for _, s := range data.Service {
+		services = append(services, service.New(data.Root, s))
 	}
 
 	for _, service := range services {

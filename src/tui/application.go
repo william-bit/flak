@@ -1,24 +1,27 @@
 package tui
 
 import (
+	"flak/src/config"
 	"strings"
 
 	tea "github.com/charmbracelet/bubbletea"
 )
 
 type screen struct {
-	cursorX int
-	cursorY int
-	width   int
-	height  int
+	cursorX  int
+	cursorY  int
+	width    int
+	height   int
+	registry config.Config
 }
 
-func InitScreen() screen {
+func InitScreen(data config.Config) screen {
 	return screen{
-		cursorX: 0,
-		cursorY: 0,
-		width:   0,
-		height:  0,
+		registry: data,
+		cursorX:  0,
+		cursorY:  0,
+		width:    0,
+		height:   0,
 	}
 }
 
@@ -62,7 +65,7 @@ func (screen screen) View() string {
 	var s string
 
 	// Top Border
-	s += "╭" + strings.Repeat("─", screen.width) + "╮\n"
+	s += "┌" + strings.Repeat("─", screen.width) + "┐\n"
 
 	for yAxis := 0; yAxis < screen.height; yAxis++ {
 		s += "│"
@@ -77,7 +80,7 @@ func (screen screen) View() string {
 	}
 
 	// bottom Border
-	s += "╰" + strings.Repeat("─", screen.width) + "╯"
+	s += "└" + strings.Repeat("─", screen.width) + "┘"
 	s += "\n[.]Stop/Start All [Space]Start/Stop [,]Reload  [/]Root Folder [']Change Port [;]Open in Web [?]Help"
 	return s
 }
