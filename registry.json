@@ -1,10 +1,12 @@
 {
     "$schema": "./usr/schema/registry.schema.json",
     "$schemaVersion": "1.0",
-    "php": [
+    "services": [
         {
             "id": "php-8.4.6-nts-Win32-vs17-x64",
             "version": "8.4.6",
+            "name" : "PHP-8",
+            "group": "PHP",
             "type": "nts",
             "arch": "x64",
             "vc": "vs17",
@@ -19,12 +21,12 @@
             ],
             "license": "PHP-3.01",
             "origin": "official"
-        }
-    ],
-    "mysql": [
+        },
         {
             "id": "mysql-9.2.0-winx64",
             "version": "9.2.0",
+            "name": "MYSQL-9",
+            "group": "mysql",
             "sha256": null,
             "homepage": "https://downloads.mysql.com/archives/community/",
             "url": "https://dev.mysql.com/get/Downloads/MySQL-9.2/mysql-9.2.0-winx64.zip",
@@ -50,6 +52,7 @@
         {
             "id": "mysql-5.7.43-winx64",
             "version": "5.7.43",
+            "name": "MYSQL-5",
             "sha256": null,
             "homepage": "https://downloads.mysql.com/archives/community/",
             "url": "https://dev.mysql.com/get/Downloads/MySQL-5.7/mysql-5.7.43-winx64.zip",
@@ -71,12 +74,12 @@
             ],
             "license": "GPL-2.0",
             "origin": "official"
-        }
-    ],
-    "nginx": [
+        },
         {
             "id": "nginx-1.22.0",
             "version": "1.22.0",
+            "name": "NGINX",
+            "group": "nginx",
             "sha256": null,
             "homepage": "https://nginx.org/en/download.html",
             "url": "https://nginx.org/download/nginx-1.22.0.zip",

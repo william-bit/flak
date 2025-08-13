@@ -16,12 +16,12 @@ import (
 
 func main() {
 	data := config.LoadConfig()
-	// initTUI(data)
-	initServices(data)
+	initTUI(data)
+	// initServices(data)
 }
 
 func initTUI(data config.Config) {
-	p := tea.NewProgram(tui.InitScreen(data))
+	p := tea.NewProgram(tui.InitScreen(data), tea.WithAltScreen())
 	if _, err := p.Run(); err != nil {
 		fmt.Printf("Alas, there's been an error: %v", err)
 		os.Exit(1)
