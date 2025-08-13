@@ -2,6 +2,7 @@ package config
 
 type Component struct {
 	ID         string   `json:"id"`
+	Name       string   `json:"name"`
 	Version    string   `json:"version"`
 	Sha256     string   `json:"sha256"`
 	Homepage   string   `json:"homepage"`

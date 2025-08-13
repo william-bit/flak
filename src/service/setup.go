@@ -32,7 +32,7 @@ func (setup *SetupService) initDataFolder(dataDir string) error {
 		cmd.Stdout = os.Stdout
 		cmd.Stderr = os.Stderr
 
-		log.Println("Initializing " + setup.service.ID + " data directory...")
+		log.Println("Initializing " + setup.service.Name + " data directory...")
 		return cmd.Run() // This waits until the process finishes
 	}
 	return nil
@@ -47,25 +47,25 @@ func replaceInStringArray(data []string, old string, new string) []string {
 
 func (setup *SetupService) Start() {
 	// Start MySQL (Update path accordingly)
-	if pid, err := LoadPID(setup.service.ID); err != nil || !RunningService(pid) {
+	if pid, err := LoadPID(setup.service.Name); err != nil || !RunningService(pid) {
 		if setup.service.DataDir != "" {
 			dataDir := setup.root + "/" + setup.service.DataDir
 			setup.service.Initialize.InitDataFolder = replaceInStringArray(setup.service.Initialize.InitDataFolder, "${dataDir}", dataDir)
 			setup.service.Args = replaceInStringArray(setup.service.Args, "${dataDir}", dataDir)
 			setup.initDataFolder(dataDir)
 		}
-		setup.Cmd, err = StartService(setup.service.ID, setup.service.Executable, setup.service.Args...)
+		setup.Cmd, err = StartService(setup.service.Name, setup.service.Executable, setup.service.Args...)
 		if err != nil {
-			log.Fatalf("Failed to start %s : %v", setup.service.ID, err)
+			log.Fatalf("Failed to start %s : %v", setup.service.Name, err)
 		} else {
-			log.Printf(setup.service.ID+".Process.Pid: %d", setup.Cmd.Process.Pid)
+			log.Printf(setup.service.Name+".Process.Pid: %d", setup.Cmd.Process.Pid)
 		}
 	}
 
 }
 
 func (setup *SetupService) Stop() {
-	ShutdownService(setup.service.ID, setup.Cmd)
+	ShutdownService(setup.service.Name, setup.Cmd)
 }
 
 func (setup *SetupService) Status() string {
