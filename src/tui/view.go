@@ -2,6 +2,7 @@ package tui
 
 import (
 	"flak/src/config"
+	"flak/src/tui/menu"
 	"strings"
 	"time"
 
@@ -9,23 +10,37 @@ import (
 	"github.com/charmbracelet/lipgloss"
 )
 
-type screen struct {
+type Screen struct {
 	cursorX    int
 	cursorY    int
 	showCursor bool
 	width      int
 	height     int
+	menu       string
 	config     config.Config
+	listMenu   map[string]string
 }
 
-func InitScreen(data config.Config) screen {
-	return screen{
+func InitScreen(data config.Config) Screen {
+	return Screen{
 		config:     data,
 		cursorX:    0,
 		cursorY:    0,
 		width:      0,
 		height:     0,
 		showCursor: true, // Start visible
+		menu:       "Applications",
+		listMenu: map[string]string{
+			"1": "Applications",
+			"2": "Settings",
+			"3": "Registry",
+			"4": "Database",
+			"5": "Cron",
+			"6": "Generator",
+			"7": "ApiClient",
+			"8": "Regex",
+			"9": "Note",
+		},
 	}
 }
 
@@ -46,11 +61,11 @@ func tick() tea.Cmd {
 	})
 }
 
-func (screen screen) Init() tea.Cmd {
+func (screen Screen) Init() tea.Cmd {
 	return tick()
 }
 
-func (screen screen) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
+func (screen Screen) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	switch msg := msg.(type) {
 	case tea.WindowSizeMsg:
 		screen.width = msg.Width - 2
@@ -77,6 +92,12 @@ func (screen screen) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 			if screen.cursorX < screen.width-1 {
 				screen.cursorX++
 			}
+		default:
+			{
+				if key := msg.String(); len(key) == 1 && key >= "1" && key <= "9" {
+					screen.menu = screen.listMenu[key]
+				}
+			}
 		}
 	case tickMsg:
 		screen.showCursor = !screen.showCursor
@@ -85,20 +106,20 @@ func (screen screen) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	return screen, nil
 }
 
-func (screen screen) handleBlinking(text, invertedText string) string {
+func (screen Screen) handleBlinking(text, invertedText string) string {
 	if screen.showCursor {
 		return text
 	}
 	return invertedText
 }
 
-func (screen screen) View() string {
-	var view string
-	texts := []string{
-		"oke", "not oke",
-	}
+func (screen Screen) View() string {
+	texts := []string{}
+	texts = append(texts, menu.Header(screen.width))
+	texts = append(texts, screen.menu)
 
 	// Top Border
+	var view string
 	view += "┌" + strings.Repeat("─", screen.width) + "┐\n"
 
 	for yAxis := 0; yAxis < screen.height; yAxis++ {
