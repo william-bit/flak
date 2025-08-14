@@ -13,7 +13,7 @@ func Header(screenWidth int) string {
 	s := ""
 	for key, header := range headers {
 		if (sectionLength - len(header)) > 0 {
-			s += header + strings.Repeat(" ", sectionLength-len(header))
+			s += " " + header + strings.Repeat(" ", sectionLength-len(" "+header))
 			if key != len(headers)-1 {
 				s += "│"
 			}

@@ -74,7 +74,7 @@ func (screen Screen) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		screen.width = msg.Width - 2
 		screen.height = msg.Height - 3
 		screen.cursorX = 0
-		screen.cursorY = 0
+		screen.cursorY = 4
 	case tea.KeyMsg:
 		switch msg.String() {
 		case "ctrl+c", "q":
@@ -135,6 +135,7 @@ func (screen Screen) View() string {
 	texts = append(texts, screen.menuSection())
 	texts = append(texts, strings.Repeat("─", screen.width))
 	texts = append(texts, menu.Header(screen.width))
+	texts = append(texts, strings.Repeat("─", screen.width))
 	texts = append(texts, screen.menu)
 
 	// Top Border
