@@ -2,6 +2,7 @@ package service
 
 import (
 	"flak/src/config"
+	"fmt"
 	"log"
 	"os"
 	"os/exec"
@@ -12,6 +13,7 @@ type SetupService struct {
 	root    string
 	service config.Component
 	Cmd     *exec.Cmd
+	pid     int
 }
 
 func New(root string, service config.Component) *SetupService {
@@ -20,7 +22,12 @@ func New(root string, service config.Component) *SetupService {
 	return &SetupService{
 		root:    root,
 		service: service,
+		pid:     -1,
 	}
+}
+
+func (setup *SetupService) GetPid() int {
+	return setup.pid
 }
 
 // initMySQLDataFolder initializes the MySQL data dir if needed
@@ -64,8 +71,24 @@ func (setup *SetupService) Start() {
 
 }
 
-func (setup *SetupService) Stop() {
-	ShutdownService(setup.service.Name, setup.Cmd)
+func (setup *SetupService) Restart() {
+	setup.Stop()
+	setup.Start()
+}
+
+func (setup *SetupService) Resume(pid int) {
+	setup.pid = pid
+}
+
+func (setup *SetupService) Stop() error {
+	cmd := setup.Cmd
+	if cmd != nil && cmd.Process != nil {
+		setup.pid = cmd.Process.Pid
+	} else {
+		return fmt.Errorf("no process found for %s", setup.service.Name)
+	}
+	ShutdownService(setup.service.Name, setup.pid)
+	return nil
 }
 
 func (setup *SetupService) Status() string {

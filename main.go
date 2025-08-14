@@ -29,15 +29,20 @@ func initTUI(data config.Config) {
 }
 
 func initServices(data config.Config) { // Try to reconnect to existing services
-	service.ResumeService()
 
 	var services []service.Service = []service.Service{}
 	for _, s := range data.Service {
 		services = append(services, service.New(data.Root, s))
+		service.ResumeService(s.Name)
 	}
 
-	for _, service := range services {
-		service.Start() // ← This is the interface in action!
+	for _, s := range services {
+		pid := s.GetPid()
+		if pid != -1 {
+			s.Resume(pid)
+		} else {
+			s.Start()
+		}
 	}
 
 	// Wait for interrupt signal

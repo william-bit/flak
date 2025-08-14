@@ -11,8 +11,10 @@ import (
 
 type Service interface {
 	Start()
-	Stop()
+	Resume(pid int)
+	Stop() error
 	Status() string
+	GetPid() int
 }
 
 // Start service in detached mode
@@ -35,37 +37,27 @@ func StartService(name, path string, args ...string) (*exec.Cmd, error) {
 }
 
 // Reconnect to existing services
-func ResumeService() {
-	names := []string{"mysql", "php", "nginx"}
-	for _, name := range names {
-		pid, err := LoadPID(name)
-		if err != nil {
-			continue
-		}
-		if RunningService(pid) {
-			log.Printf("%s is already running with PID %d", name, pid)
-		} else {
-			log.Printf("%s had PID %d but is no longer running.", name, pid)
-		}
+func ResumeService(name string) int {
+	pid, _ := LoadPID(name)
+	if RunningService(pid) {
+		log.Printf("%s is already running with PID %d", name, pid)
+	} else {
+		log.Printf("%s had PID %d but is no longer running.", name, pid)
 	}
+	return pid
 }
 
-func ShutdownService(name string, cmd *exec.Cmd) error {
-	if cmd != nil && cmd.Process != nil {
-		pid := cmd.Process.Pid
+func ShutdownService(name string, pid int) error {
 
-		cmd := exec.Command("taskkill", "/F", "/T", "/PID", strconv.Itoa(pid))
-		out, err := cmd.CombinedOutput()
-		if err != nil {
-			log.Printf("Error killing process: %s", out)
-			return err
-		}
-
-		fmt.Printf("Successfully killed process with PID %d\n", pid)
-		return nil
-	} else {
-		return fmt.Errorf("no process found for %s", name)
+	cmd := exec.Command("taskkill", "/F", "/T", "/PID", strconv.Itoa(pid))
+	out, err := cmd.CombinedOutput()
+	if err != nil {
+		log.Printf("Error killing process: %s", out)
+		return err
 	}
+
+	fmt.Printf("Successfully killed process with PID %d\n", pid)
+	return nil
 }
 
 // Check if process is still running
