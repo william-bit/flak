@@ -3,6 +3,16 @@ package tui
 import (
 	"flak/src/config"
 	"flak/src/tui/menu"
+	"flak/src/tui/menu/apiclient"
+	"flak/src/tui/menu/application"
+	"flak/src/tui/menu/credential"
+	"flak/src/tui/menu/cron"
+	"flak/src/tui/menu/database"
+	"flak/src/tui/menu/generator"
+	"flak/src/tui/menu/netstat"
+	"flak/src/tui/menu/regex"
+	"flak/src/tui/menu/registry"
+	"flak/src/tui/menu/setting"
 	"fmt"
 	"strconv"
 	"strings"
@@ -12,38 +22,51 @@ import (
 	"github.com/charmbracelet/lipgloss"
 )
 
+type ListMenuItem struct {
+	Name string
+	Menu menu.Menu
+}
+
 type Screen struct {
-	cursorX    int
-	cursorY    int
-	showCursor bool
-	width      int
-	height     int
-	menu       string
-	config     config.Config
-	listMenu   []string
+	cursorX     int
+	cursorY     int
+	showCursor  bool
+	width       int
+	height      int
+	menu        string
+	config      config.Config
+	listMenu    []ListMenuItem
+	currentMenu menu.Menu
+}
+
+func defaultMenuItems() []ListMenuItem {
+	initMenu := application.New()
+	return []ListMenuItem{
+		{Name: "Applications", Menu: initMenu},
+		{Name: "Settings", Menu: setting.New()},
+		{Name: "Registry", Menu: registry.New()},
+		{Name: "Database", Menu: database.New()},
+		{Name: "Cron", Menu: cron.New()},
+		{Name: "Generator", Menu: generator.New()},
+		{Name: "ApiClient", Menu: apiclient.New()},
+		{Name: "Regex", Menu: regex.New()},
+		{Name: "NetStat", Menu: netstat.New()},
+		{Name: "Credentials", Menu: credential.New()},
+	}
 }
 
 func InitScreen(data config.Config) Screen {
+	listMenu := defaultMenuItems()
 	return Screen{
-		config:     data,
-		cursorX:    0,
-		cursorY:    0,
-		width:      0,
-		height:     0,
-		showCursor: true, // Start visible
-		menu:       "Applications",
-		listMenu: []string{
-			"Applications",
-			"Settings",
-			"Registry",
-			"Database",
-			"Cron",
-			"Generator",
-			"ApiClient",
-			"Regex",
-			"NetStat",
-			"Note",
-		},
+		config:      data,
+		cursorX:     0,
+		cursorY:     0,
+		width:       0,
+		height:      0,
+		showCursor:  true, // Start visible
+		menu:        "Applications",
+		currentMenu: listMenu[0].Menu,
+		listMenu:    listMenu,
 	}
 }
 
@@ -99,7 +122,8 @@ func (screen Screen) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 			{
 				if key := msg.String(); len(key) == 1 && key >= "0" && key <= "9" {
 					num, _ := strconv.Atoi(key)
-					screen.menu = screen.listMenu[num]
+					screen.menu = screen.listMenu[num].Name
+					screen.currentMenu = screen.listMenu[num].Menu
 				}
 			}
 		}
@@ -119,10 +143,10 @@ func (screen Screen) handleBlinking(text, invertedText string) string {
 func (screen Screen) menuSection() string {
 	menu := ""
 	for key, value := range screen.listMenu {
-		if screen.menu == value {
-			menu += fmt.Sprintf("[*]%s ", value)
+		if screen.menu == value.Name {
+			menu += fmt.Sprintf("[*]%s ", value.Name)
 		} else {
-			menu += fmt.Sprintf("[%d]%s ", key, value)
+			menu += fmt.Sprintf("[%d]%s ", key, value.Name)
 		}
 	}
 	paddingX := max(screen.width-len(menu), 0)
@@ -134,9 +158,9 @@ func (screen Screen) View() string {
 	texts := []string{}
 	texts = append(texts, screen.menuSection())
 	texts = append(texts, strings.Repeat("─", screen.width))
-	texts = append(texts, menu.Header(screen.width))
+	texts = append(texts, screen.currentMenu.Header(screen.width))
 	texts = append(texts, strings.Repeat("─", screen.width))
-	texts = append(texts, screen.menu)
+	texts = append(texts, screen.currentMenu.Content())
 
 	// Top Border
 	var view string

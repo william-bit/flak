@@ -1,8 +1,18 @@
-package menu
+package netstat
 
 import "strings"
 
-func Header(screenWidth int) string {
+type Section struct {
+	LineStart int
+}
+
+func New() Section {
+	return Section{
+		LineStart: 4,
+	}
+}
+
+func (app Section) Header(screenWidth int) string {
 	headers := []string{
 		"Name",
 		"Port",
@@ -20,4 +30,8 @@ func Header(screenWidth int) string {
 		}
 	}
 	return s
+}
+
+func (app Section) Content() string {
+	return "Netstat Menu"
 }
