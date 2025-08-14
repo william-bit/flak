@@ -3,26 +3,29 @@ package tui
 import (
 	"flak/src/config"
 	"strings"
+	"time"
 
 	tea "github.com/charmbracelet/bubbletea"
 	"github.com/charmbracelet/lipgloss"
 )
 
 type screen struct {
-	cursorX int
-	cursorY int
-	width   int
-	height  int
-	config  config.Config
+	cursorX    int
+	cursorY    int
+	showCursor bool
+	width      int
+	height     int
+	config     config.Config
 }
 
 func InitScreen(data config.Config) screen {
 	return screen{
-		config:  data,
-		cursorX: 0,
-		cursorY: 0,
-		width:   0,
-		height:  0,
+		config:     data,
+		cursorX:    0,
+		cursorY:    0,
+		width:      0,
+		height:     0,
+		showCursor: true, // Start visible
 	}
 }
 
@@ -33,8 +36,18 @@ var (
 		Background(lipgloss.Color("7"))  // White background
 )
 
+// Message to trigger cursor blink
+type tickMsg time.Time
+
+// Every 500ms, send a tickMsg to toggle cursor visibility
+func tick() tea.Cmd {
+	return tea.Tick(time.Millisecond*500, func(t time.Time) tea.Msg {
+		return tickMsg(t)
+	})
+}
+
 func (screen screen) Init() tea.Cmd {
-	return nil
+	return tick()
 }
 
 func (screen screen) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
@@ -65,6 +78,9 @@ func (screen screen) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 				screen.cursorX++
 			}
 		}
+	case tickMsg:
+		screen.showCursor = !screen.showCursor
+		return screen, tick() // Schedule next tick
 	}
 	return screen, nil
 }
@@ -87,9 +103,17 @@ func (screen screen) View() string {
 		for xAxis := 0; xAxis < screen.width; xAxis++ {
 			if xAxis == screen.cursorX && yAxis == screen.cursorY {
 				if xAxis < len(text) {
-					view += invertedStyle.Render(string(text[xAxis]))
+					if screen.showCursor {
+						view += invertedStyle.Render(string(text[xAxis]))
+					} else {
+						view += string(text[xAxis])
+					}
 				} else {
-					view += "█"
+					if screen.showCursor {
+						view += "█"
+					} else {
+						view += " "
+					}
 				}
 			} else {
 				if xAxis < len(text) {
