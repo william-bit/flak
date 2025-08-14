@@ -85,6 +85,13 @@ func (screen screen) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	return screen, nil
 }
 
+func (screen screen) handleBlinking(text, invertedText string) string {
+	if screen.showCursor {
+		return text
+	}
+	return invertedText
+}
+
 func (screen screen) View() string {
 	var view string
 	texts := []string{
@@ -101,26 +108,16 @@ func (screen screen) View() string {
 			text = []rune(texts[yAxis])
 		}
 		for xAxis := 0; xAxis < screen.width; xAxis++ {
-			if xAxis == screen.cursorX && yAxis == screen.cursorY {
-				if xAxis < len(text) {
-					if screen.showCursor {
-						view += invertedStyle.Render(string(text[xAxis]))
-					} else {
-						view += string(text[xAxis])
-					}
-				} else {
-					if screen.showCursor {
-						view += "█"
-					} else {
-						view += " "
-					}
-				}
+			isCurrentCursor := xAxis == screen.cursorX && yAxis == screen.cursorY
+			isCursorInFrontChar := xAxis < len(text)
+			if isCurrentCursor && isCursorInFrontChar {
+				view += screen.handleBlinking(string(text[xAxis]), invertedStyle.Render(string(text[xAxis])))
+			} else if isCurrentCursor {
+				view += screen.handleBlinking("█", " ")
+			} else if isCursorInFrontChar {
+				view += string(text[xAxis])
 			} else {
-				if xAxis < len(text) {
-					view += string(text[xAxis])
-				} else {
-					view += " "
-				}
+				view += " "
 			}
 		}
 		view += "│\n"
