@@ -1,6 +1,6 @@
 ╭─────────────────────────────────────────────────────────[Flak]────────────────────────────────────────────────────────────────╮
 │            [1]Applications(*) [2]Settings [3]Registry [4]Database [5]Cron [6]Mail [7]Netstat [8]ApiClient [9]Regex            │
-├[0]─ Data Catalog ──┬─[=]─╴Query╶╴New╶╴Structure╶────────────────────────────────────────────────╴MySQL » Localhost » DBtest1╶─┤
+├[`]─ Data Catalog ──┬─[=]─╴Query╶╴New╶╴Structure╶────────────────────────────────────────────────╴MySQL » Localhost » DBtest1╶─┤
 │TestingTbl0         │SELECT *                                                                                                  ▐
 │TestingTbl1         │FROM DBNAME.TABLENAME                                                                                     │
 │TestingTbl2         │WHERE COLUMN = VALUE                                                                                      │

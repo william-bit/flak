@@ -3,6 +3,8 @@ package tui
 import (
 	"flak/src/config"
 	"flak/src/tui/menu"
+	"fmt"
+	"strconv"
 	"strings"
 	"time"
 
@@ -18,7 +20,7 @@ type Screen struct {
 	height     int
 	menu       string
 	config     config.Config
-	listMenu   map[string]string
+	listMenu   []string
 }
 
 func InitScreen(data config.Config) Screen {
@@ -30,16 +32,17 @@ func InitScreen(data config.Config) Screen {
 		height:     0,
 		showCursor: true, // Start visible
 		menu:       "Applications",
-		listMenu: map[string]string{
-			"1": "Applications",
-			"2": "Settings",
-			"3": "Registry",
-			"4": "Database",
-			"5": "Cron",
-			"6": "Generator",
-			"7": "ApiClient",
-			"8": "Regex",
-			"9": "Note",
+		listMenu: []string{
+			"Applications",
+			"Settings",
+			"Registry",
+			"Database",
+			"Cron",
+			"Generator",
+			"ApiClient",
+			"Regex",
+			"NetStat",
+			"Note",
 		},
 	}
 }
@@ -94,8 +97,9 @@ func (screen Screen) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 			}
 		default:
 			{
-				if key := msg.String(); len(key) == 1 && key >= "1" && key <= "9" {
-					screen.menu = screen.listMenu[key]
+				if key := msg.String(); len(key) == 1 && key >= "0" && key <= "9" {
+					num, _ := strconv.Atoi(key)
+					screen.menu = screen.listMenu[num]
 				}
 			}
 		}
@@ -112,9 +116,24 @@ func (screen Screen) handleBlinking(text, invertedText string) string {
 	}
 	return invertedText
 }
+func (screen Screen) menuSection() string {
+	menu := ""
+	for key, value := range screen.listMenu {
+		if screen.menu == value {
+			menu += fmt.Sprintf("[*]%s ", value)
+		} else {
+			menu += fmt.Sprintf("[%d]%s ", key, value)
+		}
+	}
+	paddingX := max(screen.width-len(menu), 0)
+	view := strings.Repeat(" ", paddingX/2) + menu + strings.Repeat(" ", paddingX/2)
+	return view
+}
 
 func (screen Screen) View() string {
 	texts := []string{}
+	texts = append(texts, screen.menuSection())
+	texts = append(texts, strings.Repeat("─", screen.width))
 	texts = append(texts, menu.Header(screen.width))
 	texts = append(texts, screen.menu)
 
