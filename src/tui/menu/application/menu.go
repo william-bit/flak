@@ -44,7 +44,7 @@ func (app Section) Main(screenWidth int) []string {
 		}
 		if (sectionLength - len(header)) > 0 {
 			textContent += " " + header
-			textContent += strings.Repeat(" ", max(sectionLength-len(textContent), 0))
+			textContent += strings.Repeat(" ", max(sectionLength-utf8.RuneCountInString(textContent), 0))
 			headerContent += textContent
 			headerCenter += textCenter + strings.Repeat("┈", utf8.RuneCountInString(textContent)-key)
 			headerTop += textTop + strings.Repeat("─", utf8.RuneCountInString(textContent)-key)
@@ -57,12 +57,20 @@ func (app Section) Main(screenWidth int) []string {
 	texts = append(texts, "╭"+headerTop+leftoverTextDash+"╮")
 	texts = append(texts, "│"+headerContent+leftoverText+"│")
 	texts = append(texts, "├"+headerCenter+leftoverTextDash+"┤")
+
 	for _, s := range config.LoadConfig().Service {
-		listService := ""
-		listService += s.Name + strings.Repeat(" ", max(sectionLength-len(s.Name), 0))
-		listService += "│" + strconv.Itoa(s.Port) + strings.Repeat(" ", max(sectionLength-utf8.RuneCountInString("│"+strconv.Itoa(s.Port))-2, 0))
-		listService += "│ -" + strings.Repeat(" ", max(sectionLength-utf8.RuneCountInString("│ -"), 0)+3)
-		texts = append(texts, "│"+listService+"│")
+		if s.Type == "server" || s.Type == "database" || s.Type == "service" {
+			listService := s.Name
+			if s.Type == "service" {
+				listService += " (" + s.ServiceName + ")"
+			}
+			listService += strings.Repeat(" ", max(sectionLength-utf8.RuneCountInString(listService), 0))
+			listService += "│" + strconv.Itoa(s.Port)
+			listService += strings.Repeat(" ", max((sectionLength*2)-utf8.RuneCountInString(listService), 0))
+			listService += "│ -"
+			listService += strings.Repeat(" ", max(repeat-utf8.RuneCountInString(listService), 0))
+			texts = append(texts, "│"+listService+"│")
+		}
 	}
 	texts = append(texts, "├"+headerButton+leftoverTextDash+"┤")
 	return texts

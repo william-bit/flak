@@ -2,15 +2,15 @@
 │            [1]Applications(*) [2]Settings [3]Registry [4]Database [5]Cron [6]Mail [7]Netstat [8]ApiClient [9]Regex            │
 ╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 ╭[`]─Registry───────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
-│Runtime Environment (10)                                                                                                       │
-│ * PHP                                                                                                                         │
+│Runtime App (3)                                                                                                                │
 │ - Python                                                                                                                      │
 │ * NodeJS                                                                                                                      │
 │ * Java 1.8 => Java 21 !                                                                                                       │
-│Server (2)                                                                                                                     │
+│Runtime Service (1)                                                                                                            │
+│ * PHP                                                                                                                         │
+│Server (3)                                                                                                                     │
 │ - Nginx                                                                                                                       │
 │ * Apache                                                                                                                      │
-│Java Server (1)                                                                                                                │
 │ - Tomcat                                                                                                                      │
 │Message Broker (1)                                                                                                             │
 │ - RabbitMQ                                                                                                                    │

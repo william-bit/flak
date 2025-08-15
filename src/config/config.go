@@ -1,20 +1,22 @@
 package config
 
 type Component struct {
-	ID         string   `json:"id"`
-	Name       string   `json:"name"`
-	Version    string   `json:"version"`
-	Port       int      `json:"port"`
-	Sha256     string   `json:"sha256"`
-	Homepage   string   `json:"homepage"`
-	URL        string   `json:"url"`
-	ExtractDir string   `json:"extractDir"`
-	Executable string   `json:"executable"`
-	Args       []string `json:"args"`
-	License    string   `json:"license"`
-	Origin     string   `json:"origin"`
-	DataDir    string   `json:"dataDir"`
-	Initialize struct {
+	ID          string   `json:"id"`
+	Name        string   `json:"name"`
+	Version     string   `json:"version"`
+	Type        string   `json:"type"`
+	ServiceName string   `json:"serviceName"`
+	Port        int      `json:"port"`
+	Sha256      string   `json:"sha256"`
+	Homepage    string   `json:"homepage"`
+	URL         string   `json:"url"`
+	ExtractDir  string   `json:"extractDir"`
+	Executable  string   `json:"executable"`
+	Args        []string `json:"args"`
+	License     string   `json:"license"`
+	Origin      string   `json:"origin"`
+	DataDir     string   `json:"dataDir"`
+	Initialize  struct {
 		InitDataFolder []string `json:"initDataFolder"`
 	} `json:"initialize"`
 }
