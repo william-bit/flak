@@ -16,8 +16,8 @@ import (
 
 func main() {
 	data := config.LoadConfig()
-	initTUI(data)
-	// initServices(data)
+	// initTUI(data)
+	initServices(data)
 }
 
 func initTUI(data config.Config) {
@@ -32,17 +32,13 @@ func initServices(data config.Config) { // Try to reconnect to existing services
 
 	var services []service.Service = []service.Service{}
 	for _, s := range data.Service {
-		services = append(services, service.New(data.Root, s))
-		service.ResumeService(s.Name)
+		if (s.Type == "server" || s.Type == "database" || s.Type == "service") && s.AutoStart {
+			services = append(services, service.New(data.Root, s))
+		}
 	}
 
 	for _, s := range services {
-		pid := s.GetPid()
-		if pid != -1 {
-			s.Resume(pid)
-		} else {
-			s.Start()
-		}
+		s.Start()
 	}
 
 	// Wait for interrupt signal

@@ -6,6 +6,7 @@ type Component struct {
 	Version     string   `json:"version"`
 	Type        string   `json:"type"`
 	ServiceName string   `json:"serviceName"`
+	AutoStart   bool     `json:"autoStart"`
 	Port        int      `json:"port"`
 	Sha256      string   `json:"sha256"`
 	Homepage    string   `json:"homepage"`

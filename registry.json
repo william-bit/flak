@@ -5,7 +5,7 @@
         {
             "id": "php-8.4.6-nts-Win32-vs17-x64",
             "version": "8.4.6",
-            "name" : "PHP-8",
+            "name": "PHP-8",
             "group": "PHP",
             "type": "nts",
             "arch": "x64",
@@ -90,6 +90,25 @@
                 "${DIR}/etc/nginx/nginx.conf"
             ],
             "license": "BSD-2-Clause",
+            "origin": "official"
+        },
+        {
+            "id": "httpd-2.4.65-250724-Win64-VS17",
+            "version": "2.4.65",
+            "name": "Apache",
+            "group": "apache",
+            "sha256": null,
+            "homepage": "https://www.apachelounge.com/download/  ",
+            "url": "https://www.apachelounge.com/download/VC17/apache2/binaries/httpd-2.4.65-win64-VS17.zip  ",
+            "executable": "${DIR}/bin/apache/httpd.exe",
+            "extractDir": "httpd-2.4.65-250724-Win64-VS17",
+            "args": [
+                "-f",
+                "${DIR}/etc/apache2/fcgid.conf",
+                "-d",
+                "${DIR}/www"
+            ],
+            "license": "Apache-2.0",
             "origin": "official"
         }
     ]

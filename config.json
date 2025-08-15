@@ -62,7 +62,7 @@
             "type": "server",
             "port": 80,
             "sha256": null,
-            "autoStart": true,
+            "autoStart": false,
             "homepage": "https://nginx.org/en/download.html",
             "url": "https://nginx.org/download/nginx-1.22.0.zip",
             "executable": "nginx.exe",
@@ -72,6 +72,24 @@
                 "${root}/etc/nginx/nginx.conf"
             ],
             "license": "BSD-2-Clause",
+            "origin": "official"
+        },
+        {
+            "id": "httpd-2.4.65-250724-Win64-VS17",
+            "version": "2.4.65",
+            "name": "Apache",
+            "autoStart": true,
+            "type": "server",
+            "sha256": null,
+            "homepage": "https://www.apachelounge.com/download/  ",
+            "url": "https://www.apachelounge.com/download/VS17/binaries/httpd-2.4.65-250724-Win64-VS17.zip",
+            "executable": "httpd.exe",
+            "extractDir": "bin/apache2/httpd-2.4.65-250724-Win64-VS17/bin",
+            "args": [
+                "-f",
+                "${root}/etc/apache2/fcgid.conf"
+            ],
+            "license": "Apache-2.0",
             "origin": "official"
         }
     ]
