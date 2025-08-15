@@ -17,6 +17,7 @@ import (
 	"strconv"
 	"strings"
 	"time"
+	"unicode/utf8"
 
 	tea "github.com/charmbracelet/bubbletea"
 	"github.com/charmbracelet/lipgloss"
@@ -155,6 +156,7 @@ func (screen Screen) menuSection() string {
 	}
 	paddingX := max(screen.repeat()-len(menu), 0)
 	view := strings.Repeat(" ", paddingX/2) + menu + strings.Repeat(" ", paddingX/2)
+	view += strings.Repeat(" ", max(screen.repeat()-utf8.RuneCountInString(view), 0))
 	return view
 }
 

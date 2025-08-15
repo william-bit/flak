@@ -1,6 +1,8 @@
 package application
 
 import (
+	"flak/src/config"
+	"strconv"
 	"strings"
 	"unicode/utf8"
 )
@@ -55,12 +57,19 @@ func (app Section) Main(screenWidth int) []string {
 	texts = append(texts, "╭"+headerTop+leftoverTextDash+"╮")
 	texts = append(texts, "│"+headerContent+leftoverText+"│")
 	texts = append(texts, "├"+headerCenter+leftoverTextDash+"┤")
+	for _, s := range config.LoadConfig().Service {
+		listService := ""
+		listService += s.Name + strings.Repeat(" ", max(sectionLength-len(s.Name), 0))
+		listService += "│" + strconv.Itoa(s.Port) + strings.Repeat(" ", max(sectionLength-utf8.RuneCountInString("│"+strconv.Itoa(s.Port))-2, 0))
+		listService += "│ -" + strings.Repeat(" ", max(sectionLength-utf8.RuneCountInString("│ -"), 0)+3)
+		texts = append(texts, "│"+listService+"│")
+	}
 	texts = append(texts, "├"+headerButton+leftoverTextDash+"┤")
-	content := app.Content()
-	texts = append(texts, "│"+content+strings.Repeat(" ", max(repeat-len(content), 0))+"│")
 	return texts
 }
 
-func (app Section) Content() string {
-	return "App Menu"
+func (app Section) Content() []string {
+	texts := []string{}
+	texts = append(texts, "App Menu")
+	return texts
 }
