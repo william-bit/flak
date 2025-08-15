@@ -94,8 +94,8 @@ func (screen Screen) Init() tea.Cmd {
 func (screen Screen) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	switch msg := msg.(type) {
 	case tea.WindowSizeMsg:
-		screen.width = msg.Width - 2
-		screen.height = msg.Height - 3
+		screen.width = msg.Width
+		screen.height = msg.Height - 1
 		screen.cursorX = 0
 		screen.cursorY = 4
 	case tea.KeyMsg:
@@ -140,6 +140,10 @@ func (screen Screen) handleBlinking(text, invertedText string) string {
 	}
 	return invertedText
 }
+func (screen Screen) repeat() int {
+	repeat := max(screen.width-2, 0)
+	return repeat
+}
 func (screen Screen) menuSection() string {
 	menu := ""
 	for key, value := range screen.listMenu {
@@ -149,47 +153,48 @@ func (screen Screen) menuSection() string {
 			menu += fmt.Sprintf("[%d]%s ", key, value.Name)
 		}
 	}
-	paddingX := max(screen.width-len(menu), 0)
+	paddingX := max(screen.repeat()-len(menu), 0)
 	view := strings.Repeat(" ", paddingX/2) + menu + strings.Repeat(" ", paddingX/2)
 	return view
 }
 
 func (screen Screen) View() string {
 	texts := []string{}
-	texts = append(texts, screen.menuSection())
-	texts = append(texts, strings.Repeat("─", screen.width))
-	texts = append(texts, screen.currentMenu.Header(screen.width))
-	texts = append(texts, strings.Repeat("─", screen.width))
-	texts = append(texts, screen.currentMenu.Content())
+	texts = append(texts, "╭"+strings.Repeat("─", screen.repeat())+"╮")
+	texts = append(texts, "│"+screen.menuSection()+"│")
+	texts = append(texts, "╰"+strings.Repeat("─", screen.repeat())+"╯")
+	texts = append(texts, screen.currentMenu.Main(screen.width)...)
+	fillCount := max(screen.height-len(texts)-1, 0)
+	for range fillCount {
+		texts = append(texts, "│"+strings.Repeat(" ", screen.repeat())+"│")
+	}
+	texts = append(texts, "╰"+strings.Repeat("─", screen.repeat())+"╯")
 
 	// Top Border
 	var view string
-	view += "┌" + strings.Repeat("─", screen.width) + "┐\n"
 
 	for yAxis := 0; yAxis < screen.height; yAxis++ {
-		view += "│"
 		var text []rune
 		if yAxis < len(texts) {
 			text = []rune(texts[yAxis])
 		}
 		for xAxis := 0; xAxis < screen.width; xAxis++ {
 			isCurrentCursor := xAxis == screen.cursorX && yAxis == screen.cursorY
-			isCursorInFrontChar := xAxis < len(text)
-			if isCurrentCursor && isCursorInFrontChar {
+			isThereAChar := xAxis < len(text)
+			if isCurrentCursor && isThereAChar {
 				view += screen.handleBlinking(string(text[xAxis]), invertedStyle.Render(string(text[xAxis])))
 			} else if isCurrentCursor {
 				view += screen.handleBlinking("█", " ")
-			} else if isCursorInFrontChar {
+			} else if isThereAChar {
 				view += string(text[xAxis])
 			} else {
 				view += " "
 			}
 		}
-		view += "│\n"
+		view += "\n"
 	}
 
 	// bottom Border
-	view += "└" + strings.Repeat("─", screen.width) + "┘"
-	view += "\n[.]Stop/Start All [Space]Start/Stop [,]Reload  [/]Root Folder [']Change Port [;]Open in Web [?]Help"
+	view += "[.]Stop/Start All [Space]Start/Stop [,]Reload  [/]Root Folder [']Change Port [;]Open in Web [?]Help"
 	return view
 }

@@ -12,7 +12,7 @@ func New() Section {
 	}
 }
 
-func (app Section) Header(screenWidth int) string {
+func (app Section) Main(screenWidth int) []string {
 	headers := []string{
 		"Name",
 		"Port",
@@ -29,9 +29,14 @@ func (app Section) Header(screenWidth int) string {
 			}
 		}
 	}
-	return s
+	repeat := max(screenWidth-2, 0)
+	texts := []string{}
+	texts = append(texts, "┌"+strings.Repeat("─", repeat)+"┐")
+	content := app.Content()
+	texts = append(texts, "│"+content+strings.Repeat("─", repeat-len(content))+"│")
+	return texts
 }
 
 func (app Section) Content() string {
-	return "API Menu"
+	return "App Menu"
 }

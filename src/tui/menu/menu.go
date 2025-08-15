@@ -1,7 +1,7 @@
 package menu
 
 type Menu interface {
-	Header(screenWidth int) string
+	Main(screenWidth int) []string
 	Content() string
 }
 

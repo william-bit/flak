@@ -1,6 +1,9 @@
 package application
 
-import "strings"
+import (
+	"strings"
+	"unicode/utf8"
+)
 
 type Section struct {
 	LineStart int
@@ -12,24 +15,50 @@ func New() Section {
 	}
 }
 
-func (app Section) Header(screenWidth int) string {
+func (app Section) Main(screenWidth int) []string {
 	headers := []string{
 		"Name",
 		"Port",
 		"Status",
 	}
-	sectionLength := screenWidth / len(headers)
+	repeat := max(screenWidth-2, 0)
+	sectionLength := repeat / len(headers)
 
-	s := ""
+	headerTop := ""
+	headerContent := ""
+	headerCenter := ""
+	headerButton := ""
 	for key, header := range headers {
+		textContent := ""
+		textTop := ""
+		textCenter := ""
+		textButton := ""
+		if key != 0 {
+			textContent = "│"
+			textTop = "┬"
+			textCenter = "┼"
+			textButton = "┴"
+
+		}
 		if (sectionLength - len(header)) > 0 {
-			s += " " + header + strings.Repeat(" ", sectionLength-len(" "+header))
-			if key != len(headers)-1 {
-				s += "│"
-			}
+			textContent += " " + header
+			textContent += strings.Repeat(" ", max(sectionLength-len(textContent), 0))
+			headerContent += textContent
+			headerCenter += textCenter + strings.Repeat("┈", utf8.RuneCountInString(textContent)-key)
+			headerTop += textTop + strings.Repeat("─", utf8.RuneCountInString(textContent)-key)
+			headerButton += textButton + strings.Repeat("─", utf8.RuneCountInString(textContent)-key)
 		}
 	}
-	return s
+	leftoverText := strings.Repeat(" ", max(repeat-utf8.RuneCountInString(headerContent), 0))
+	leftoverTextDash := strings.Repeat("─", max(repeat-utf8.RuneCountInString(headerCenter), 0))
+	texts := []string{}
+	texts = append(texts, "╭"+headerTop+leftoverTextDash+"╮")
+	texts = append(texts, "│"+headerContent+leftoverText+"│")
+	texts = append(texts, "├"+headerCenter+leftoverTextDash+"┤")
+	texts = append(texts, "├"+headerButton+leftoverTextDash+"┤")
+	content := app.Content()
+	texts = append(texts, "│"+content+strings.Repeat(" ", max(repeat-len(content), 0))+"│")
+	return texts
 }
 
 func (app Section) Content() string {
